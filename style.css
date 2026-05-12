@@ -19,3 +19,7 @@ a {
     text-decoration: none;
     color: #1d1915;
 }
+button {
+    font-family: monospace;
+    padding: 2px 4px;
+}

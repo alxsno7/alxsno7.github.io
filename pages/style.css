@@ -1,0 +1,21 @@
+body{
+    font-family: arial;
+    color: #1d1915;
+    background-color: #fffdf8;
+    padding: 20px;
+}
+p {
+    font-family: monospace;
+}
+.nav-bar {
+    font-family: monospace;
+    text-align: left;
+    color: #1d1915;
+}
+.details {
+    font-family: monospace;
+}
+a {
+    text-decoration: none;
+    color: #1d1915;
+}

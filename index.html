@@ -1,6 +1,7 @@
 <html lang = "en">
     <head>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="index.css">
         <title>Home</title>
         <link rel="icon" type="image/x-icon" href="icon.jpg">
    
@@ -13,10 +14,16 @@
     <body>
         <header>
             <nav class="nav-bar">
-                <a href="index.html">Home</a> |
-                <a href="log.html">Log</a> |
-                <a href="projects.html">Projects</a> |
-                <a href="photos.html">Photos</a>
+                <a href="index.html" class="current-page" class="nav-button">Home</a> |
+                <a href="log.html" class="nav-button">Log</a> |
+                <a href="#projects" class="nav-button">Projects</a> |
+                <div class="dropdown">
+                    <a href="photos.html" class="nav-button" class="dropbtn">Photos</a>
+                    <div class="dropdown-content">
+                        <a href="#album-2">UBC At Night</a>
+                        <a href="#album-1">UBC Campus</a>
+                    </div>
+                </div>
             </nav>
         </header>
 
@@ -40,7 +47,7 @@
         <hr>
         
         <br>
-        <h3>Projects</h3>
+        <h3 id="projects">Projects</h3>
         <hr>
 
 

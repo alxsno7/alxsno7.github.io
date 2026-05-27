@@ -7,28 +7,65 @@ body{
 p {
     font-family: monospace;
 }
-.nav-bar {
-    font-family: monospace;
-    text-align: left;
+a {
+    text-decoration: none;
     color: #1d1915;
 }
 .details {
     font-family: monospace;
 }
-a {
+.current-page {
+    color: white;
+    background-color: black;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+/* Navigation Bar */
+.nav-bar {
+    font-family: monospace;
+    text-align: left;
+    color: #1d1915;
+}
+.nav-button {
+    padding: 2px 4px;
+    border: none;
     text-decoration: none;
     color: #1d1915;
 }
-button {
-    font-family: monospace;
-    padding: 2px 4px;
+.nav-button:hover {background-color: #ddd;}
+
+/* Dropdown Button */
+.dropbtn {
+  border: none;
 }
-.date {
-    text-decoration: italic;
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
-.log-title {
-    font-size: 2em;
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
-.log-body {
-    font-family: arial;
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 8px 10px;
+  text-decoration: none;
+  display: block;
 }
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}

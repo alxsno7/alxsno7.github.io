@@ -1,0 +1,16 @@
+.photo {
+    max-width: 480px;
+    height: auto;
+    margin: 10px;
+}
+.photo-title {
+    font-family: monospace;
+    text-align: center;
+}
+.photo-album {
+    font-family: monospace;
+    text-align: center;
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center;
+}

@@ -24,7 +24,8 @@ a {
     text-decoration: italic;
 }
 .log-title {
-    font-size: 2em;
+    font-family: arial;
+    font-size: 24px;
 }
 .log-body {
     font-family: arial;

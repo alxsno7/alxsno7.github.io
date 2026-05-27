@@ -23,3 +23,12 @@ button {
     font-family: monospace;
     padding: 2px 4px;
 }
+.date {
+    text-decoration: italic;
+}
+.log-title {
+    font-size: 2em;
+}
+.log-body {
+    font-family: arial;
+}

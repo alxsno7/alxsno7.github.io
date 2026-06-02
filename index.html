@@ -6,9 +6,11 @@
         <link rel="icon" type="image/x-icon" href="icon.jpg">
    
         <meta charset="UTF-8">
-        <meta name="description" content="Engineering student portfolio site">
-        <meta name="keywords" content="Engineering, Portfolio, Projects, Photos, University of British Columbia, UBC, LinkedIn">
+        <meta name="title" content="Alex Sung | Engineering Portfolio">
+        <meta name="description" content="A personal portfolio website showcasing engineering projects, photos, and updates on Alex's career.">
+        <meta name="keywords" content="Engineering, Portfolio, Projects, Photos, University of British Columbia, UBC, LinkedIn, Mechanical Engineering Intern For Hire">
         <meta name="author" content="Alex Sung">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
     <body>
@@ -20,13 +22,19 @@
                     document.getElementById('nav-placeholder').innerHTML = data;
                 });
         </script>
+        <style>
+            #home-button {
+                background-color: rgb(56, 56, 56);
+                color: white;
+            }
+        </style>
         
-        <div style="display:flex; align-items: left; flex-wrap: wrap; justify-content: left; width: 300px;">
-            <div class="details" style="flex-grow: 1; padding: 0px 5px;">
+        <div id="home" style="display:flex; flex-wrap: wrap; justify-content: flex-start; width: 300px;">
+            <div class="details" style="justify-content: flex-start; flex-grow: 1; padding: 0px 5px;">
                 <a onclick="window.open('https://www.google.com/maps/place/Richmond,+BC/@49.166667,-123.166667,12z/data=!3m1!4b1!4m2!3m1!1s0x548583f8f0000000:0x5a9d8b8d8b8d8b8d', '_blank')">Richmond, British Columbia</a><br>
                 alexsung8888@gmail.com
             </div>
-            <div style="flex-grow: 1; align-items: left; padding: 0px 5px;">
+            <div style="justify-content: flex-start; padding: 0px 5px;">
                 <image class="media-button" style="justify-content: left;" onclick="window.open('https://www.linkedin.com/in/alex-cy-sung/', '_blank')" src="media/linkedin-logo.jpg" alt="LinkedIn" width="40px"></image>
                 <image class="media-button" style="justify-content: left;" onclick="window.open('https://github.com/alxsno7', '_blank')" src="media/github-logo.jpg" alt="GitHub" width="40px"></image>
             </div>
@@ -34,13 +42,9 @@
         
         <p>
             Currently an engineering student studying at the University of British Columbia. <br>
-            (Completed 1st year, expected specialization in Mechanical Engineering.)
         </p>
 
-        <p align="center">\\\ This site is under construction. \\\</p>
-        <hr>
-        
-        <br>
+        <p align="center">\\\ This site is under construction. \\\</p>        
         <h3 id="projects">Projects</h3>
         <hr>
 

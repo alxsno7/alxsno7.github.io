@@ -1,20 +1,19 @@
-<div style="display: flex; flex-wrap: wrap; justify-content: center;">
+<div>
     <div>
         <a style="flex-grow: 1;" class="Title" href="index.html">Alex Sung</a>
     </div>
-
-    <div style="flex-grow: 1;">
-        <nav class="nav-bar">
-            <a href="index.html" class="nav-button">Home</a> |
-            <a href="index.html#projects" class="nav-button">Projects</a>|
+    <div>
+        <nav class="nav-bar" style="display: flex; flex-wrap: nowrap;">
+            <a href="index.html#home" id="home-button" class="nav-button">Home</a> |
+            <a href="index.html#projects" id="projects-button" class="nav-button">Projects</a>|
             <div class="dropdown">
-                <a href="photos.html" class="nav-button" class="dropbtn">Photos</a>
+                <a href="photos.html" id="photos-button" class="nav-button" class="dropbtn">Photos ▾</a>
                 <div class="dropdown-content">
                     <a href="photos.html#album-2">UBC At Night</a>
                     <a href="photos.html#album-1">UBC Campus</a>
                 </div>
             </div> |
-            <a href="log.html" class="nav-button">Log</a> 
+            <a href="log.html" id="log-button" class="nav-button">Log</a> 
         </nav>
     </div>   
 </div>
@@ -25,12 +24,14 @@
         font-family: monospace;
         color: #1d1915;
         text-align: center;
+        font-family: tahoma;
+        text-decoration: none;
+        color: #1d1915;
+        padding: 5px 0;
     }
     .nav-button {
         padding: 0px 4px;
         border: none;
-        text-decoration: none;
-        color: #1d1915;
     }
     .nav-button:hover {background-color: #ddd;}
     .current-page {
@@ -40,8 +41,8 @@
 
     .Title {
         font-size: 24px;
-        font-weight: auto;
-        font-family: roboto;
+        font-weight: bold;
+        font-family: Georgia, 'Times New Roman', Times, serif;
     }
     .media-button {
         padding: 0px 5px;
@@ -71,6 +72,8 @@
         min-width: 120px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
+        font-size: 14px;
+        font-family: tahoma;
     }
 
     /* Links inside the dropdown */

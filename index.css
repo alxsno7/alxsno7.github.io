@@ -8,6 +8,10 @@ button {
     margin: 10px;
     display: inline-block;
 }
+iframe {
+    margin: 10px;
+    display: inline-block;
+}
 .project-text {
     font-family: arial;
     color: #1d1915;

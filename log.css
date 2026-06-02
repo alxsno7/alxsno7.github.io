@@ -16,7 +16,7 @@ p {
     font-family: monospace;
 }
 a {
-    text-decoration: none;
+    text-decoration: underline;
     color: #1d1915;
 }
 
@@ -29,4 +29,14 @@ a {
 }
 .log-body {
     font-family: arial;
+}
+img {
+    max-width: 40%;
+    height: auto;
+}
+ul {
+    padding-bottom: 6px;
+}
+li {
+    padding-bottom: 4px;
 }

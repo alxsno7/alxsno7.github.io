@@ -35,12 +35,19 @@ hr {
 .horizontal-section {
     display: flex;
     justify-content: flex-start;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 .link {
     text-decoration: underline;
     color : #171429;
 }
-
-
+ul {
+    padding-bottom: 6px;
+}
+li {
+    padding-bottom: 4px;
+}
+iframe {
+    max-width: 100%;
+}
 

@@ -1,2 +1,2 @@
 # Alex's Portfolio Site
-This site is designed to display the portfolio of Alex.
+This is my personal portfolio site that displays some of my projects and photos + log entries for the site.

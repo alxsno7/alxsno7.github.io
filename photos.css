@@ -20,21 +20,4 @@
     padding: 20px 0;
 }
 
-@media (min-width: 1440px) {
-    .photo {
-        max-width: 100%;
-        height: auto;
-        margin: 0px;
-    }
-    .photo-title {
-        font-size: 60px;
-    }
-    .photo-album {
-        font-size: 50px;
-    }
-    .section {
-    font-family: georgia, serif;
-    text-align: center;
-    padding: 20px 0;
-    }
-}
+

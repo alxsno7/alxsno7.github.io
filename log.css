@@ -30,23 +30,3 @@ a {
 .log-body {
     font-family: arial;
 }
-@media (min-width: 1440px) {
-    p {
-        font-size: 50px;
-    }
-    .nav-bar {
-        font-size: 50px;
-    }
-    .details {
-        font-size: 50px;
-    }
-    .log-title {
-        font-size: 90px;
-    }
-    .log-body {
-        font-size: 50px;
-    }
-    ul {
-        font-size: 50px;
-    }
-}

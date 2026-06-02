@@ -35,32 +35,12 @@ hr {
 .horizontal-section {
     display: flex;
     justify-content: flex-start;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
-    @media (min-width: 1440px) {
-        p {
-            font-size: 50px;
-        }
-        h1 {
-            font-size: 90px;
-        }
-        h3 {
-            font-size: 70px;
-        }
-        .details {
-            font-family: tahoma;
-            font-size: 50px;
-        }
-        .media-button {
-            width: 20px;
-        }
-        body{
-            font-family: arial;
-            color: #1d1915;
-            background-color: #fffdf8;
-            padding:10px;
-            font-size: 50px;
-        }
-    }
+.link {
+    text-decoration: underline;
+    color : #171429;
+}
+
 
 

@@ -29,14 +29,14 @@
             }
         </style>
         
-        <div id="home" style="display:flex; flex-wrap: wrap; justify-content: flex-start; width: 300px;">
-            <div class="details" style="justify-content: flex-start; flex-grow: 1; padding: 0px 5px;">
+        <div id="home" class="horizontal-section">
+            <div class="details" style="justify-content: flex-start; padding: 0px 5px;">
                 <a onclick="window.open('https://www.google.com/maps/place/Richmond,+BC/@49.166667,-123.166667,12z/data=!3m1!4b1!4m2!3m1!1s0x548583f8f0000000:0x5a9d8b8d8b8d8b8d', '_blank')">Richmond, British Columbia</a><br>
                 alexsung8888@gmail.com
             </div>
-            <div style="justify-content: flex-start; padding: 0px 5px;">
-                <image class="media-button" style="justify-content: left;" onclick="window.open('https://www.linkedin.com/in/alex-cy-sung/', '_blank')" src="media/linkedin-logo.jpg" alt="LinkedIn" width="40px"></image>
-                <image class="media-button" style="justify-content: left;" onclick="window.open('https://github.com/alxsno7', '_blank')" src="media/github-logo.jpg" alt="GitHub" width="40px"></image>
+            <div style="padding: 0px 5px;">
+                <image class="media-button" onclick="window.open('https://www.linkedin.com/in/alex-cy-sung/', '_blank')" src="media/linkedin-logo.jpg" alt="LinkedIn"></image>
+                <image class="media-button" onclick="window.open('https://github.com/alxsno7', '_blank')" src="media/github-logo.jpg" alt="GitHub"></image>
             </div>
         </div>
         
@@ -47,11 +47,25 @@
         <p align="center">\\\ This site is under construction. \\\</p>        
         <h3 id="projects">Projects</h3>
         <hr>
-
-
+            <details> 
+                <summary>Bluetooth Speaker</summary>
+                <!-- TODO: Add project details here -->
+                 <div class="horizontal-section">
+                    <div class="project-text">
+                        For my high school capstone project, I designed a Bluetooth speaker from scratch. Since I was given a lot of freedom for this project, I wanted to make a useful and quality device that I would use day to day. <br>
+                        My aim for this project was to practice 3D modeling and to try my hand at basic electronics.
+                    </div>
+                    <img src="media\capstone\bs cover.jpg" alt="Bluetooth Speaker" class="project-photo">
+                 </div>
+                    
+            </details>
         <br>
         <h3> Mini Projects</h3>
         <hr>
-
+            <details> 
+                <summary>Click to expand more information</summary>
+                 <!-- TODO: Add project details here -->
+                <p>This is the hidden content that appears when toggled.</p>
+            </details>
     </body>
 </html>

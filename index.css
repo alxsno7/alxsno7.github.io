@@ -2,3 +2,42 @@ button {
     font-family: monospace;
     padding: 2px 4px;
 }
+.project-photo {
+    max-width: 35%;
+    height: auto;
+    margin: 10px;
+}
+.project-text {
+    font-family: arial;
+    color: #1d1915;
+    background-color: #fffdf8;
+    padding: 10px;
+    max-width: 40%;
+}
+summary {
+    font-family: georgia, serif;
+    font-size: 16px;
+    flex-grow: 1;
+}
+details {
+    flex-grow: 1;
+}
+    @media (min-width: 1440px) {
+        .project-photo {
+            flex-grow: 1;
+            width: 100vw;
+        }
+        .project-text {
+            font-size: 50px;
+            width: 100vw;
+        }
+        summary {
+            font-size: 60px;
+            font-family: georgia, serif;
+            flex-grow: 1;
+            margin: 50px;
+        }
+        details {
+            font-size: 50px;
+        }
+    }

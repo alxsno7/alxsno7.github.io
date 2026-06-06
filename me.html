@@ -1,0 +1,51 @@
+<html lang = "en">
+    <head>
+        <link rel="stylesheet" href="me.css">
+        <link rel="stylesheet" href="style.css">
+        <title>Home</title>
+        <link rel="icon" type="image/x-icon" href="icon.jpg">
+   
+        <meta charset="UTF-8">
+        <meta name="title" content="Alex Sung | Engineering Portfolio">
+        <meta name="description" content="A personal portfolio website showcasing engineering projects, photos, and updates on Alex's career.">
+        <meta name="keywords" content="Engineering, Portfolio, Projects, Photos, University of British Columbia, UBC, LinkedIn, Mechanical Engineering Intern For Hire">
+        <meta name="author" content="Alex Sung">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <body>
+        <div id="nav-placeholder" id="home"></div>
+        <script>
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('nav-placeholder').innerHTML = data;
+                });
+        </script>
+        <style>
+            #me-button {
+                background-color: rgb(56, 56, 56);
+                color: white;
+            }
+        </style>
+        
+        <h2> Really Cool Cars</h2>
+
+                <p>
+            <div class="section" >
+                <div class="photo-album">
+                    <div>
+                        <img onclick="window.open('https://www.wearecurated.com/blog/ferrari-f40-supercar', '_blank')" src="media\me\ferrari-f40.webp" alt="Ferrari F40" class="photo">
+                        <h2 class="photo-title">Ferrari F40</h2>
+                    </div>
+                        
+                    <div>
+                        <img onclick="window.open('https://jdmenginezone.com/blogs/jdm-engine-technology/honda-nsx-an-affordable-sports-car-that-inspired-the-mclaren-f1?srsltid=AfmBOoqtdG5Jt-maJgF3PM0zBkv65caYSTb8I5z11cFicAM1h1tnHjz8', '_blank')" src="media\me\first-generation-acura-nsx.webp" alt="First Generation Acura NSX" class="photo">
+                        <h2 class="photo-title">First Generation Acura NSX</h2>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </p>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+.photo {
+    max-width: 94%;
+    width: auto;
+    height: 305px;
+    margin: 10px;
+}
+.photo-title {
+    font-family: georgia, serif;
+    text-align: center;
+}
+.photo-album {
+    font-family: georgia, serif;
+    text-align: center;
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center;
+}

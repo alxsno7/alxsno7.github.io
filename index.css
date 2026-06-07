@@ -22,8 +22,18 @@ iframe {
 }
 summary {
     font-family: georgia, serif;
-    font-size: 16px;
+    font-size: 17px;
+    padding: 7px;
 }
 .details {
     font-family: monospace;
+}
+.project-date {
+    font-family: monospace;
+    display: inline;
+    font-size: 16px;
+    padding-left: 7px;
+    text-decoration: none;
+    font-weight: 500;
+    vertical-align: middle;
 }

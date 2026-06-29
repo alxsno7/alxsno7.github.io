@@ -1,193 +1,1078 @@
-<html lang = "en">
-    <head>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="index.css">
-        <title>Home</title>
-        <link rel="icon" type="image/x-icon" href="icon.jpg">
-   
-        <meta charset="UTF-8">
-        <meta name="title" content="Alex Sung | Engineering Portfolio">
-        <meta name="description" content="A personal portfolio website showcasing engineering projects, photos, and updates on Alex's career.">
-        <meta name="keywords" content="Engineering, Portfolio, Projects, Photos, University of British Columbia, UBC, LinkedIn, Mechanical Engineering Intern For Hire">
-        <meta name="author" content="Alex Sung">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex Sung | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600;700&family=Courier+Prime&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CODE NAVIGATION INDEX
+   ── CSS ───────────────────────────────────────────────────
+   [CSS-VAR]    Design tokens / CSS custom properties
+   [CSS-BASE]   Reset + base styles
+   [CSS-NAV]    Top navigation bar
+   [CSS-PANEL]  Left panel (light + dark variants)
+   [CSS-PPROJ]  Second (project sections) panel
+   [CSS-MAIN]   Main content wrapper
+   [CSS-BTN]    Shared buttons / soft-btn
+   [CSS-TAG]    Tag / filter pills
+   [CSS-LAND]   Landing page
+   [CSS-LANDLT] Landing latest preview cards
+   [CSS-PORT]   Portfolio page
+   [CSS-PROJ]   Project two-column view
+   [CSS-MINI]   Mini project drawer
+   [CSS-ABOUT]  About page
+   [CSS-BLOG]   Blog page + post templates
+   [CSS-GAL]    Photo gallery + lightbox
+   [CSS-FOOTER] Shared footer
+   [CSS-UTIL]   Flash animation / scroll anchor
+   [CSS-MOB]    Mobile responsive overrides
+   ── JS ────────────────────────────────────────────────────
+   [D-SOC]   SOCIAL_LINKS + RESUME_LINK
+   [D-PRJ]   PROJECTS + DEFAULT_SECTIONS
+   [D-MIN]   MINI_PROJECTS
+   [D-ALB]   ALBUMS
+   [D-BLG]   BLOG_POSTS
+   [F-SOC]   renderSocials()
+   [F-PORT]  buildPortfolio() / makeCard()
+   [F-TAG]   filterTag() / resetFilters()
+   [F-PAG]   showPage()
+   [F-PAN]   toggleSection() / updateActivePanel()
+   [F-SCR]   scrollToId() / flashEl()
+   [F-PRJ]   openProject() / projCarStep() / backToPortfolio()
+   [F-MIN]   openMiniDrawer() / closeMiniDrawer()
+   [F-BLG]   buildBlogFeed() / buildBlogPanel()
+   [F-GAL]   renderAlbums() / openAlbum() / renderChrono()
+   [F-LBX]   openLightbox() / lbStep() / closeLightbox()
+   [F-LND]   buildLandingLatest()
+   [F-MOB]   Mobile menu / drawer overlay helpers
+   [F-INIT]  Initialisation
+   ============================================================ */
 
-    <body>
-        <div id="nav-placeholder" id="home"></div>
-        <script>
-            fetch('navbar.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('nav-placeholder').innerHTML = data;
-                });
-        </script>
-        <style>
-            #home-button {
-                background-color: rgb(56, 56, 56);
-                color: white;
-            }
-        </style>
-        
-        <div class="horizontal-section">
-            <div class="details" style="font-family: tahoma, trebuchet ms, arial;justify-content: flex-start; padding: 0px 5px;">
-                <a onclick="window.open('https://www.google.com/maps/place/Richmond,+BC/@49.166667,-123.166667,12z/data=!3m1!4b1!4m2!3m1!1s0x548583f8f0000000:0x5a9d8b8d8b8d8b8d', '_blank')">Richmond, British Columbia</a><br>
-                alexsung8888@gmail.com
-            </div>
-            <div style="padding: 0px 5px;">
-                <image class="media-button" onclick="window.open('https://www.linkedin.com/in/alex-cy-sung/', '_blank')" src="media/linkedin-logo.jpg" alt="LinkedIn"></image>
-                <image class="media-button" onclick="window.open('https://github.com/alxsno7', '_blank')" src="media/github-logo.jpg" alt="GitHub"></image>
-            </div>
-        </div>
-        
-        <p>
-            Currently an engineering student studying at the University of British Columbia. <br>
-        </p>
-      
-        <h3 id="projects">Projects <p class="project-date">(some descriptions are yet to be completed)</p></h3>
-        <hr>
+/* [CSS-VAR] */
+:root {
+  --bg:#fffdf8; --text:#1d1915; --muted:#7a7268;
+  --border:#e0d9cf; --hover-bg:#f3ede3;
+  --tag-bg:#f0e9df; --tag-on-bg:#1d1915; --tag-on-text:#fffdf8;
+  --card-bg:#ffffff; --highlight:#e8ddd0;
+  /* Dark panel */
+  --pd-bg:#3a3128; --pd-border:#4d4238;
+  --pd-text:#e8ddd0; --pd-muted:#9e8e82;
+  --pd-hover:#44392f; --pd-active:#4d4238;
+  /* Dimensions */
+  --panel-w:220px; --proj-panel-w:170px; --nav-h:46px;
+  --radius-sm:5px; --radius-btn:6px; --radius-card:10px;
+  --icon-size:15px;
+}
 
-            <!-- Arduino Metal Claw -->
-            <details> 
-                <summary>Arduino Metal Claw <p class="project-date">| Jan 2026 - Feb 2026</p></summary>
-                <!-- TODO: Add project details here -->
-                <div class="horizontal-section">
-                    <img src="media\arduino metal claw\047b054fb40b5ee0a1187601bfe9e65f.jpg" alt="Arduino Metal Claw" class="project-photo">
-                    <div class="project-text">
-                        Lorem ipsum.
-                    </div>
-                </div>   
-            </details>
+/* [CSS-BASE] */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;}
+a{color:var(--text);text-decoration:none;}
+a.ul{text-decoration:underline;color:#171429;}
+a:hover{text-decoration:underline;}
+#app{display:flex;flex-direction:column;min-height:100vh;}
+#body-wrap{display:flex;flex:1;position:relative;}
+.page{display:none;}
+.page.active{display:block;}
 
-            <!-- Toothpaste Dispenser -->
-            <details> 
-                <summary>Toothpaste Dispenser Technical Memorandum <p class="project-date">| Oct 2025 - Dec 2025</p></summary>
-                <!-- TODO: Add project details here -->
-                <div class="horizontal-section">
-                    <img src="media\toothpaste-dispenser.jpg" alt="Toothpaste Dispenser" class="project-photo">
-                    <div class="project-text">
-                        For module 3 of my APSC 100 class, my team produced a promo sheet and technical memorandum detailing an adaptive 
-                        device (toothpaste dispenser) for our client Ken Fraser. The purpose of this project was to mimic "a real-life 
-                        engineering project in the field of assistive technology, where engineers work closely with clinicians, patients, 
-                        and various stakeholders to improve the daily life of individuals with disabilities" (APSC 100 Module 3 Project 
-                        Guidelines v1).
-                    </div>
-                </div>   
-            </details>
+/* [CSS-NAV] */
+#topnav{
+  position:sticky;top:0;z-index:300;
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;padding:0 1.5rem;height:var(--nav-h);
+  background:var(--bg);border-bottom:1px solid var(--border);
+}
+#topnav .site-name{font-weight:700;font-size:14px;cursor:pointer;justify-self:start;}
+#topnav .nav-center{display:flex;align-items:center;gap:1.5rem;}
+.nav-btn{background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);padding:0;transition:color .15s;}
+.nav-btn:hover,.nav-btn.active{color:var(--text);font-weight:600;}
+/* Mobile hamburger — hidden on desktop */
+#mob-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:4px;font-size:20px;line-height:1;color:var(--text);justify-self:end;}
+/* Mobile nav elements — always hidden on desktop */
+#mob-nav{display:none;}
+#mob-nav-overlay{display:none;}
 
-            <!-- Cardboard Chair -->
-            <details open> 
-                <summary>Disaster-Relief Cardboard Chair <p class="project-date">| Sep 2025 - Oct 2025</p></summary>
-                <!-- TODO: Add project details here -->
-                <div class="horizontal-section">
-                    <img src="media\cardboard-chair.jpg" alt="Cardboard Chair" class="project-photo">
-                    <div class="project-text">
-                        For module 1 of my APSC 100 class, I designed a cardboard chair for deployment in disaster relief shelters. 
-                        The chair is targeted towards children 4-6 years of age but is suitable for all ages.
-                        <br><br>
-                        Our team ranked first overall in our year's APSC 100 cardboard chair performance.
-                    </div>
-                </div>   
-            </details>
+/* [CSS-PANEL] */
+#panel{
+  width:var(--panel-w);flex-shrink:0;
+  position:sticky;top:var(--nav-h);
+  height:calc(100vh - var(--nav-h));
+  overflow-y:auto;border-right:1px solid var(--border);
+  padding:1rem 0;font-size:13px;scrollbar-width:thin;
+  transition:background .25s,border-color .25s;
+}
+#panel::-webkit-scrollbar{width:4px;}
+#panel::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+/* Dark panel (project view) */
+#panel.dark{background:var(--pd-bg);border-right-color:var(--pd-border);}
+#panel.dark .panel-section-header{color:var(--pd-muted);}
+#panel.dark .panel-item{color:var(--pd-muted);}
+#panel.dark .panel-item:hover{background:var(--pd-hover);color:var(--pd-text);}
+#panel.dark .panel-item.active{background:var(--pd-active);color:var(--pd-text);border-left-color:var(--pd-text);font-weight:700;}
+#panel.dark .panel-back-btn{color:var(--pd-muted);border-bottom-color:var(--pd-border);}
+#panel.dark .panel-back-btn:hover{color:var(--pd-text);}
+.panel-page-content{display:none;}
+.panel-section{margin-bottom:.25rem;}
+.panel-section-header{display:flex;align-items:center;gap:.4rem;padding:.3rem 1rem;font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);cursor:pointer;user-select:none;}
+.panel-section-header .arrow{font-size:9px;transition:transform .2s;display:inline-block;}
+.panel-section-header.collapsed .arrow{transform:rotate(-90deg);}
+.panel-items{list-style:none;}
+.panel-items.hidden{display:none;}
+.panel-item{display:block;padding:.28rem 1rem .28rem 1.6rem;cursor:pointer;border-left:2px solid transparent;color:var(--muted);font-size:12.5px;line-height:1.4;transition:background .12s,color .12s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.panel-item:hover{background:var(--hover-bg);color:var(--text);}
+.panel-item.active{font-weight:700;color:var(--text);border-left-color:var(--text);background:var(--hover-bg);}
+.panel-back-btn{display:flex;align-items:center;gap:.3rem;padding:.4rem 1rem;font-size:12px;color:var(--muted);cursor:pointer;border-bottom:1px solid var(--border);margin-bottom:.5rem;transition:color .15s;}
+.panel-back-btn:hover{color:var(--text);}
+.timeline-year{padding:.5rem 1rem .2rem;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+.timeline-item{display:block;padding:.25rem 1rem .25rem 1.6rem;cursor:pointer;border-left:2px solid transparent;color:var(--muted);font-size:12px;line-height:1.35;transition:background .12s,color .12s;}
+.timeline-item:hover{background:var(--hover-bg);color:var(--text);}
+.timeline-item.active{font-weight:700;color:var(--text);border-left-color:var(--text);background:var(--hover-bg);}
 
-            <!-- Bluetooth Speaker -->
-            <details open> 
-                <summary>Bluetooth Speaker <p class="project-date">| Dec 2024 - Mar 2025</p></summary>
-                <!-- TODO: Add project details here -->
-                <div class="horizontal-section">
-                    <img src="media\capstone\bluetoothspeaker-capstone.jpg" alt="Bluetooth Speaker" class="project-photo">
-                    <div class="project-text">
-                        I built a Bluetooth speaker for my highschool capstone. Since I was given a lot of freedom for this project, 
-                        I wanted to make a useful and quality device that I would use day to day. 
-                        <br>
-                        With this being one of my first complicated projects, I learned a lot about planning and managing a self-directed 
-                        project. Since I had to produce a video presentation, I made sure to document my process and progress while 
-                        making sure to maintain a coherent timeline. I also taught myself 3D modeling and printing, soldering, and circuit 
-                        design for the internal components.
-                        <br>
-                        <br>
-                        The video presentation can be found <a class="link" href="https://www.youtube.com/watch?v=JUrEkrl5aF4" target="_blank">here</a>.
+/* [CSS-PPROJ] */
+#proj-panel{
+  width:var(--proj-panel-w);flex-shrink:0;
+  position:sticky;top:var(--nav-h);
+  height:calc(100vh - var(--nav-h));
+  overflow-y:auto;border-right:1px solid var(--pd-border);
+  padding:1rem 0;font-size:13px;scrollbar-width:thin;
+  display:none;background:var(--pd-bg);
+}
+#proj-panel::-webkit-scrollbar{width:4px;}
+#proj-panel::-webkit-scrollbar-thumb{background:var(--pd-border);border-radius:2px;}
+#proj-panel .panel-section-header{color:var(--pd-muted);}
+#proj-panel .panel-item{color:var(--pd-muted);}
+#proj-panel .panel-item:hover{background:var(--pd-hover);color:var(--pd-text);}
+#proj-panel .panel-item.active{background:var(--pd-active);color:var(--pd-text);border-left-color:var(--pd-text);font-weight:700;}
 
-                    </div>
-                </div>   
-            </details>
-            <!-- Cookie Cart Launcher -->
-            <details> 
-                <summary>Cookie Cart Launcher <p class="project-date">| Apr 2024 - Jun 2024</p></summary>
-                <!-- TODO: Add project details here -->
-                <div class="horizontal-section">
-                    <img src="media\cookie cart launcher\cookiecart-launcher.jpg" alt="Bluetooth Speaker" class="project-photo">
-                    <div class="project-text">
-                        For my Physics 11 final project, I designed an elastic powered cart that delivers a fortune cookie from a launcher controlled via lego technic.
-                    </div>
-                </div>   
-            </details>
-        <br>
-        <h3> Mini Projects</h3>
-        <hr>
-            <!-- 2026 Mini Projects -->
-            <details open> 
-                <summary>2026 Mini Projects</summary>
-                 <!-- TODO: Add project details here -->
-                <div class="horizontal-section">
-                    <iframe src="https://www.printables.com/embed/1742576" width="640" height="190" scrolling="no" frameborder="0"></iframe>
-                    <div class="project-text">
-                            <p class="details">May 31st</p>
-                            A plastic holder to keep all your cards together. I designed this to store all my extra gift cards and loyalty cards 
-                            that I don't use often but still want to keep.
-                    </div>
-                </div>
-                <div class="horizontal-section">
-                    <iframe src="https://www.printables.com/embed/1742582" width="640" height="190" scrolling="no" frameborder="0"></iframe>
-                    <div class="project-text">
-                            <p class="details">Feb 21st</p>
-                            A marker holder that fits various sizes. I designed it because I had a hard time reaching shorter markers and fitting thicker markers in my pencil stand.
-                    </div>
-                </div>
-            </details>
-            <!-- 2026 Mini Projects -->
-            <details open> 
-                <summary>2024 Mini Projects</summary>
-                 <!-- TODO: Add project details here -->
-                <div class="horizontal-section">
-                    <img src="media\mini projects\catkeychain.jpg" width=400 height="auto" scrolling="no" frameborder="0"></img>
-                    <div class="project-text">
-                            <p class="details">Feb 27th</p>
-                            Two cat keychains referenced from a bookmark model.
-                            <br><br>
-                            The bookmark model can be found <a class="link" href="https://www.printables.com/model/837580-cat-bookmark" target="_blank">here</a>
-                    </div>
-                </div>
-                 <div class="horizontal-section">
-                    <img src="media\mini projects\pencilcasev1.jpg" width=310 height="auto" scrolling="no" frameborder="0"></img>
-                    <img src="media\mini projects\pencilcasev2.jpg" width=310 height="auto" scrolling="no" frameborder="0"></img>
-                    <div class="project-text">
-                            <p class="details">Feb 28th, 29th</p>
-                            A light magnetic pencil case to secure all your pencils in your backpack.
-                            <br>
-                            Shown on the left are versions 1 and 2.
-                    </div>
-                </div>
-                <div class="horizontal-section">
-                    <img src="media\mini projects\fidgetspinner.jpg" width=400 height="auto" scrolling="no" frameborder="0"></img>
-                    <div class="project-text">
-                            <p class="details">Feb 27th</p>
-                            A fidget spinner with a ball bearing inside.
-                    </div>
-                </div>
-                <div class="horizontal-section">
-                    <img src="media\mini projects\initialdkeychain.jpg" width=400 height="auto" scrolling="no" frameborder="0"></img>
-                    <div class="project-text">
-                            <p class="details">Feb 24th</p>
-                            A keychain based on the anime 'Initial D.'
-                            <br><br>
-                            References:
-                            <ul>
-                                <li><a class="link" href="https://www.printables.com/model/549920-initial-d-fujiwara-tofu-store-plaque" target="_blank">Tag Model</a></li>
-                                <li><a class="link" href="https://www.printables.com/model/405420-toyota-ae86-trueno-keychain" target="_blank">Car Model</a></li>
-                            </ul>
-                    </div>
-                </div>
-            </details>
-    </body>
+/* [CSS-MAIN] */
+#main{flex:1;min-width:0;padding:2.5rem 2.5rem 5rem;}
+#proj-view{display:none;flex:1;min-width:0;height:calc(100vh - var(--nav-h));overflow:hidden;}
+#proj-view.active{display:flex;}
+#proj-content-col{flex:1;min-width:0;overflow-y:auto;padding:2rem 2rem 4rem;}
+#proj-carousel-col{width:340px;flex-shrink:0;border-left:1px solid var(--border);position:sticky;top:0;height:100%;overflow:hidden;display:flex;flex-direction:column;}
+
+/* [CSS-BTN] */
+.soft-btn{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:500;padding:4px 11px;border-radius:var(--radius-btn);border:1px solid var(--border);background:var(--tag-bg);color:var(--text);cursor:pointer;transition:background .15s,border-color .15s;text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
+.soft-btn:hover{background:var(--hover-bg);border-color:#c9bfb4;text-decoration:none;}
+.social-icon{width:var(--icon-size);height:var(--icon-size);object-fit:contain;display:block;flex-shrink:0;}
+
+/* [CSS-TAG] */
+.tag-btn{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;padding:3px 10px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--tag-bg);color:var(--muted);cursor:pointer;transition:background .18s,color .18s,border-color .18s,box-shadow .18s;}
+.tag-btn:hover{background:var(--hover-bg);color:var(--text);border-color:#c9bfb4;}
+.tag-btn.on{background:var(--tag-on-bg);color:var(--tag-on-text);border-color:var(--tag-on-bg);box-shadow:0 1px 4px rgba(29,25,21,.18);}
+hr.section-div{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+
+/* [CSS-LAND] */
+.landing-a{display:flex;flex-direction:column;gap:1.5rem;padding-top:1rem;}
+.landing-a h1{font-family:'Source Serif 4',serif;font-size:2rem;font-weight:600;}
+.meta{display:flex;flex-wrap:wrap;gap:.75rem;color:var(--muted);font-size:13px;}
+.social-row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;}
+.nav-cards{display:flex;gap:1rem;flex-wrap:wrap;}
+.nav-card{flex:1;min-width:160px;padding:1.5rem;border:1px solid var(--border);background:var(--card-bg);border-radius:var(--radius-card);cursor:pointer;transition:background .18s,transform .15s,border-color .18s;}
+.nav-card:hover{background:var(--hover-bg);transform:translateY(-2px);border-color:#c9bfb4;}
+.nav-card h2{font-family:'Source Serif 4',serif;font-size:1.2rem;margin-bottom:.2rem;}
+.nav-card p{font-size:12.5px;color:var(--muted);}
+
+/* [CSS-LANDLT] */
+.land-latest{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:.5rem;}
+.land-latest-card{flex:1;min-width:220px;border:1px solid var(--border);background:var(--card-bg);border-radius:var(--radius-card);cursor:pointer;overflow:hidden;transition:border-color .18s,transform .15s;}
+.land-latest-card:hover{border-color:#a09484;transform:translateY(-2px);}
+.land-latest-cover{width:100%;aspect-ratio:16/9;background:#f1ede4;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:11px;color:var(--muted);overflow:hidden;}
+.land-latest-cover img{width:100%;height:100%;object-fit:cover;display:block;}
+.land-latest-body{padding:.85rem 1rem;}
+.land-latest-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem;}
+.land-latest-title{font-family:'Source Serif 4',serif;font-size:1rem;font-weight:600;margin-bottom:.15rem;}
+.land-latest-sub{font-size:12px;color:var(--muted);}
+
+/* [CSS-PORT] */
+.filter-bar{display:flex;flex-wrap:wrap;gap:.4rem;padding:.65rem 0;margin-bottom:1.5rem;position:sticky;top:var(--nav-h);z-index:10;background:var(--bg);border-bottom:1px solid var(--border);}
+.portfolio-section{margin-bottom:3rem;}
+.portfolio-section-title{font-family:'Source Serif 4',serif;font-size:1.2rem;font-weight:600;margin-bottom:1.25rem;padding-bottom:.3rem;border-bottom:2px solid var(--text);}
+.proj-card{display:flex;gap:1.25rem;margin-bottom:1.25rem;border:1px solid var(--border);background:var(--card-bg);padding:1rem;border-radius:var(--radius-card);transition:border-color .18s;cursor:pointer;}
+.proj-card:hover{border-color:#a09484;}
+.proj-card.hidden{display:none;}
+.proj-thumb{width:110px;flex-shrink:0;background:#f1ede4;border:1px dashed var(--border);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:11px;color:var(--muted);text-align:center;padding:.5rem;min-height:85px;overflow:hidden;}
+.proj-thumb img{width:100%;height:100%;object-fit:cover;border-radius:3px;}
+.proj-body{flex:1;min-width:0;}
+.proj-title{font-family:'Source Serif 4',serif;font-size:1rem;font-weight:600;margin-bottom:.1rem;}
+.proj-date{font-family:monospace;font-size:11px;color:var(--muted);margin-bottom:.45rem;}
+.proj-desc{font-size:13px;color:var(--muted);margin-bottom:.55rem;line-height:1.5;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:.3rem;}
+.proj-tag{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;padding:1px 7px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--tag-bg);color:var(--muted);}
+
+/* [CSS-PROJ] */
+.proj-carousel-wrap{flex:1;position:relative;background:#f5f0e8;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.proj-carousel-img{max-width:100%;max-height:100%;object-fit:contain;display:block;transition:opacity .2s;}
+.proj-carousel-placeholder{font-family:monospace;font-size:12px;color:var(--muted);text-align:center;padding:2rem;}
+.proj-carousel-nav{display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;border-top:1px solid var(--border);font-family:monospace;font-size:11px;color:var(--muted);background:var(--bg);}
+.proj-car-btn{background:none;border:1px solid var(--border);border-radius:4px;padding:2px 8px;cursor:pointer;font-size:13px;color:var(--text);transition:background .15s;}
+.proj-car-btn:hover{background:var(--hover-bg);}
+.proj-car-btn:disabled{opacity:.3;cursor:default;}
+.proj-section-block{margin-bottom:2rem;}
+.proj-section-header{display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;}
+.proj-section-title{font-family:'Source Serif 4',serif;font-size:1.05rem;font-weight:600;}
+.proj-section-img-btn{font-size:11px;font-family:monospace;padding:1px 7px;border:1px solid var(--border);border-radius:4px;cursor:pointer;color:var(--muted);background:var(--tag-bg);white-space:nowrap;transition:background .15s;}
+.proj-section-img-btn:hover{background:var(--hover-bg);color:var(--text);}
+.proj-section-img-btn.active-img-btn{background:var(--text);color:var(--tag-on-text);border-color:var(--text);}
+.proj-section-desc{font-size:13.5px;color:var(--muted);line-height:1.6;}
+.proj-page-title{font-family:'Source Serif 4',serif;font-size:1.5rem;font-weight:600;margin-bottom:.2rem;}
+.proj-page-date{font-family:monospace;font-size:11px;color:var(--muted);margin-bottom:1.5rem;}
+hr.proj-div{border:none;border-top:1px solid var(--border);margin:1.5rem 0;}
+
+/* [CSS-MINI] */
+#mini-drawer{position:fixed;top:var(--nav-h);right:0;z-index:250;width:340px;height:calc(100vh - var(--nav-h));background:var(--bg);border-left:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1);box-shadow:-4px 0 20px rgba(29,25,21,.08);}
+#mini-drawer.open{transform:translateX(0);}
+#mini-drawer-header{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.1rem;border-bottom:1px solid var(--border);}
+#mini-drawer-title{font-family:'Source Serif 4',serif;font-size:1.05rem;font-weight:600;}
+#mini-drawer-close{background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--muted);line-height:1;padding:2px;}
+#mini-drawer-close:hover{color:var(--text);}
+#mini-drawer-carousel{flex:0 0 240px;background:#f5f0e8;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+#mini-drawer-carousel img{max-width:100%;max-height:240px;object-fit:contain;}
+.mini-car-nav{display:flex;align-items:center;justify-content:space-between;padding:.4rem .8rem;border-top:1px solid var(--border);background:var(--bg);font-family:monospace;font-size:11px;color:var(--muted);}
+#mini-drawer-body{flex:1;overflow-y:auto;padding:1rem 1.1rem;}
+#mini-drawer-date{font-family:monospace;font-size:11px;color:var(--muted);margin-bottom:.3rem;}
+#mini-drawer-desc{font-size:13.5px;color:var(--muted);line-height:1.6;}
+#mini-drawer-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.75rem;}
+
+/* [CSS-ABOUT] */
+.about-header{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.75rem;align-items:flex-start;}
+.about-photo-wrap{width:150px;flex-shrink:0;aspect-ratio:3/4;border-radius:8px;background:#f1ede4;border:1px dashed var(--border);display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:11px;color:var(--muted);text-align:center;overflow:hidden;}
+.about-photo-wrap img{width:100%;height:100%;object-fit:cover;border-radius:8px;}
+.about-info{flex:1;min-width:200px;display:flex;flex-direction:column;gap:.45rem;}
+.about-name{font-family:'Source Serif 4',serif;font-size:1.8rem;font-weight:600;line-height:1.1;}
+.about-title-line{font-size:13px;color:var(--muted);}
+.about-section-title{font-family:'Source Serif 4',serif;font-size:1.1rem;font-weight:600;margin:1.75rem 0 .65rem;padding-bottom:.25rem;border-bottom:1px solid var(--border);}
+.about-bio{font-size:13.5px;color:var(--muted);}
+.about-bio.placeholder{font-style:italic;border-left:2px solid var(--border);padding-left:.75rem;}
+.hobbies-grid{display:grid;grid-template-columns:1fr 1fr;gap:.1rem 2rem;margin-top:.75rem;}
+.hobbies-grid li{font-size:13.5px;color:var(--muted);list-style:disc;margin-left:1.2rem;padding-bottom:3px;}
+.position-list{list-style:none;display:flex;flex-direction:column;gap:.65rem;}
+.position-item{display:flex;flex-direction:column;gap:.1rem;padding:.75rem;border:1px solid var(--border);background:var(--card-bg);border-radius:6px;}
+.position-role{font-weight:600;font-size:13.5px;}
+.position-org{font-size:12.5px;color:var(--muted);}
+.position-date{font-family:monospace;font-size:11px;color:var(--muted);}
+
+/* [CSS-BLOG] */
+#page-blog{max-width:720px;}
+.blog-feed{display:flex;flex-direction:column;gap:1.5rem;}
+.blog-post-small{border-radius:12px;overflow:hidden;border:1px solid var(--border);width:300px;flex-shrink:0;}
+.blog-post-small .bp-inner{padding:1rem;}
+.blog-post-small .bp-title{font-family:'Inter',sans-serif;font-size:15px;font-weight:700;margin-bottom:.5rem;}
+.blog-post-small .bp-caption{font-size:13px;line-height:1.5;}
+.blog-post-small .bp-date{font-family:'Courier Prime',monospace;font-size:11px;color:#aaa;margin-top:.5rem;text-align:right;}
+.blog-post-large{border-radius:12px;overflow:hidden;border:1px solid var(--border);display:flex;}
+.blog-post-large .bp-carousel-side{width:260px;flex-shrink:0;}
+.blog-post-large .bp-text-side{flex:1;padding:1.25rem 1.4rem;display:flex;flex-direction:column;}
+.blog-post-large .bp-title{font-family:'Inter',sans-serif;font-size:16px;font-weight:700;margin-bottom:.5rem;}
+.blog-post-large .bp-caption{font-size:13.5px;line-height:1.6;flex:1;}
+.blog-post-large .bp-date{font-family:'Courier Prime',monospace;font-size:11px;color:#aaa;margin-top:.75rem;text-align:right;}
+.blog-post-text{border-radius:12px;overflow:hidden;border:1px solid var(--border);padding:1.25rem 1.5rem;}
+.blog-post-text .bp-title{font-family:'Inter',sans-serif;font-size:16px;font-weight:700;margin-bottom:.5rem;}
+.blog-post-text .bp-caption{font-size:13.5px;line-height:1.6;}
+.blog-post-text .bp-date{font-family:'Courier Prime',monospace;font-size:11px;color:#aaa;margin-top:.75rem;text-align:right;}
+.bp-carousel{position:relative;background:#f5f0e8;overflow:hidden;}
+.blog-post-small .bp-carousel{aspect-ratio:4/5;}
+.blog-post-large .bp-carousel{height:100%;min-height:200px;}
+.bp-carousel img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .18s;}
+.bp-carousel-placeholder{width:100%;height:100%;min-height:140px;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:11px;color:var(--muted);text-align:center;padding:1rem;}
+.bp-car-dots{display:flex;justify-content:center;gap:4px;padding:6px 0;}
+.bp-car-dot{width:6px;height:6px;border-radius:50%;background:var(--border);cursor:pointer;transition:background .15s;}
+.bp-car-dot.on{background:var(--muted);}
+.bp-car-arrows{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;pointer-events:none;}
+.bp-car-arrow{pointer-events:all;background:rgba(255,255,255,.7);border:none;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;margin:0 6px;transition:background .15s;color:var(--text);}
+.bp-car-arrow:hover{background:rgba(255,255,255,.95);}
+
+/* [CSS-GAL] */
+.gallery-controls{display:flex;gap:.4rem;margin-bottom:1rem;}
+.album-grid{display:flex;flex-wrap:wrap;gap:1rem;}
+.album-card{width:calc(33.33% - .7rem);cursor:pointer;}
+.album-cover-wrap{position:relative;aspect-ratio:3/4;overflow:hidden;background:#f1ede4;border:1px solid var(--border);border-radius:12px;}
+.album-cover-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .22s;}
+.album-card:hover .album-cover-wrap img{transform:scale(1.04);}
+.album-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:11px;color:var(--muted);text-align:center;padding:.5rem;}
+.album-overlay{position:absolute;inset:0;background:rgba(29,25,21,.5);display:flex;align-items:flex-end;padding:.65rem;border-radius:12px;}
+.album-overlay span{color:#fffdf8;font-family:'Source Serif 4',serif;font-size:.95rem;font-weight:600;line-height:1.2;}
+.album-count{font-family:monospace;font-size:11px;color:var(--muted);margin-top:.3rem;text-align:center;}
+.album-back{font-size:12.5px;cursor:pointer;color:var(--muted);margin-bottom:.75rem;display:inline-block;}
+.album-back:hover{color:var(--text);text-decoration:underline;}
+.album-view{display:none;}
+.album-view.active{display:block;}
+.album-detail-title{font-family:'Source Serif 4',serif;font-size:1.2rem;margin-bottom:1rem;}
+.photo-grid{display:flex;flex-wrap:wrap;gap:.5rem;}
+.photo-thumb{aspect-ratio:3/4;width:calc(25% - .4rem);overflow:hidden;background:#f1ede4;border:1px solid var(--border);border-radius:7px;cursor:pointer;}
+.photo-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .2s;display:block;}
+.photo-thumb:hover img{transform:scale(1.04);}
+.photo-placeholder-thumb{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:10px;color:var(--muted);text-align:center;padding:.25rem;}
+.chrono-grid{display:flex;flex-wrap:wrap;gap:.5rem;}
+.chrono-item{aspect-ratio:3/4;width:calc(25% - .4rem);overflow:hidden;background:#f1ede4;border:1px solid var(--border);border-radius:7px;cursor:pointer;}
+.chrono-item img{width:100%;height:100%;object-fit:cover;transition:transform .2s;display:block;}
+.chrono-item:hover img{transform:scale(1.04);}
+#lightbox{display:none;position:fixed;inset:0;z-index:999;background:rgba(15,12,10,.93);align-items:center;justify-content:center;}
+#lightbox.open{display:flex;}
+#lightbox-img{max-width:82vw;max-height:85vh;object-fit:contain;border-radius:6px;display:block;transition:opacity .18s;}
+#lightbox-close{position:fixed;top:1.1rem;right:1.4rem;color:rgba(255,255,255,.7);font-size:1.5rem;cursor:pointer;background:none;border:none;line-height:1;z-index:1001;}
+#lightbox-close:hover{color:#fff;}
+.lb-arrow{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.75);font-size:1.4rem;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1001;backdrop-filter:blur(4px);transition:background .15s,color .15s;user-select:none;}
+.lb-arrow:hover{background:rgba(255,255,255,.18);color:#fff;}
+.lb-arrow.hidden{display:none;}
+#lb-prev{left:1.2rem;}#lb-next{right:1.2rem;}
+#lb-counter{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.5);font-family:monospace;font-size:12px;z-index:1001;}
+
+/* [CSS-FOOTER] */
+.site-footer{margin-top:4rem;padding:1.5rem 0;border-top:1px solid var(--border);font-family:monospace;font-size:12px;color:var(--muted);text-align:center;}
+
+/* [CSS-UTIL] */
+.section-title-h1{font-family:'Source Serif 4',serif;font-size:1.8rem;font-weight:600;margin-bottom:.2rem;}
+.section-sub{color:var(--muted);font-size:13px;margin-bottom:.5rem;}
+.section-anchor{scroll-margin-top:25vh;}
+@keyframes flash-highlight{0%{background:var(--highlight);}100%{background:transparent;}}
+.flash{animation:flash-highlight 1.2s ease-out forwards;border-radius:4px;}
+
+/* [CSS-MOB] ─── Mobile overrides (≤768px) ─────────────────── */
+@media(max-width:768px){
+  /* Hide desktop panel + show hamburger */
+  #panel,#proj-panel{display:none!important;}
+  #mob-menu-btn{display:flex;align-items:center;justify-content:center;}
+  /* Nav: name left, hamburger right */
+  #topnav{grid-template-columns:1fr auto;}
+  #topnav .nav-center{display:none;}
+
+  /* Mobile nav drawer — shown only on mobile */
+  #mob-nav{
+    display:flex;
+    position:fixed;top:0;left:0;bottom:0;width:72vw;max-width:280px;
+    background:var(--bg);border-right:1px solid var(--border);
+    z-index:400;transform:translateX(-100%);
+    transition:transform .28s cubic-bezier(.4,0,.2,1);
+    flex-direction:column;padding:1rem 0;
+    overflow-y:auto;
+  }
+  #mob-nav.open{transform:translateX(0);}
+  #mob-nav-overlay{position:fixed;inset:0;background:rgba(29,25,21,.35);z-index:399;display:none;}
+  #mob-nav-overlay.open{display:block;}
+  #mob-nav .mob-nav-header{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem .75rem;border-bottom:1px solid var(--border);margin-bottom:.5rem;}
+  #mob-nav .mob-site-name{font-weight:700;font-size:14px;}
+  #mob-nav .mob-close{background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--muted);}
+  #mob-nav .mob-nav-item{display:block;padding:.65rem 1.4rem;font-size:15px;color:var(--text);border-left:2px solid transparent;cursor:pointer;}
+  #mob-nav .mob-nav-item:hover,.mob-nav-item.active{background:var(--hover-bg);border-left-color:var(--text);font-weight:600;}
+  #mob-nav .mob-nav-section{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:.75rem 1.4rem .2rem;}
+  #mob-nav .mob-nav-sub{display:block;padding:.4rem 1.4rem .4rem 2rem;font-size:13px;color:var(--muted);cursor:pointer;border-left:2px solid transparent;}
+  #mob-nav .mob-nav-sub:hover{background:var(--hover-bg);color:var(--text);}
+
+  /* Main padding */
+  #main{padding:1.5rem 1.2rem 4rem;}
+
+  /* Landing */
+  .landing-a h1{font-size:1.6rem;}
+  .nav-cards{flex-direction:column;}
+  .land-latest{flex-direction:column;}
+
+  /* Portfolio cards — stack thumb on top */
+  .proj-card{flex-direction:column;gap:.75rem;}
+  .proj-thumb{width:100%;height:160px;min-height:unset;}
+
+  /* Filter bar — horizontal scroll */
+  .filter-bar{flex-wrap:nowrap;overflow-x:auto;padding-bottom:.5rem;scrollbar-width:none;}
+  .filter-bar::-webkit-scrollbar{display:none;}
+
+  /* Project view — single column, carousel below */
+  #proj-view{flex-direction:column;height:auto;overflow:visible;}
+  #proj-content-col{padding:1.2rem 1.2rem 2rem;overflow:visible;}
+  #proj-carousel-col{width:100%;height:260px;border-left:none;border-top:1px solid var(--border);position:relative;}
+
+  /* Mini drawer — full width */
+  #mini-drawer{width:100%;border-left:none;border-top:1px solid var(--border);}
+
+  /* Blog posts */
+  .blog-post-large{flex-direction:column;}
+  .blog-post-large .bp-carousel-side{width:100%;}
+  .blog-post-small{width:100%;}
+
+  /* Album grid — 2 columns */
+  .album-card{width:calc(50% - .5rem);}
+  .photo-thumb,.chrono-item{width:calc(33.33% - .35rem);}
+
+  /* Hobbies — single column on small screens */
+  .hobbies-grid{grid-template-columns:1fr;}
+
+  /* About photo */
+  .about-photo-wrap{width:120px;}
+
+  /* Lightbox arrows inset more on mobile */
+  #lb-prev{left:.4rem;}
+  #lb-next{right:.4rem;}
+}
+
+@media(max-width:480px){
+  .photo-thumb,.chrono-item{width:calc(50% - .25rem);}
+  .about-photo-wrap{width:100px;}
+  .land-latest-card{min-width:unset;}
+}
+</style>
+</head>
+<body>
+<div id="app">
+
+<!-- [CSS-NAV] -->
+<nav id="topnav">
+  <span class="site-name" onclick="showPage('landing')">Alex Sung</span>
+  <div class="nav-center">
+    <button class="nav-btn" onclick="showPage('landing')" data-page="landing">home</button>
+    <button class="nav-btn" onclick="showPage('portfolio')" data-page="portfolio">portfolio</button>
+    <button class="nav-btn" onclick="showPage('about')" data-page="about">about</button>
+    <button class="nav-btn" onclick="showPage('blog')" data-page="blog">blog</button>
+  </div>
+  <button id="mob-menu-btn" onclick="openMobNav()" aria-label="Menu">☰</button>
+</nav>
+
+<!-- Mobile nav drawer -->
+<div id="mob-nav-overlay" onclick="closeMobNav()"></div>
+<div id="mob-nav">
+  <div class="mob-nav-header">
+    <span class="mob-site-name">Alex Sung</span>
+    <button class="mob-close" onclick="closeMobNav()">✕</button>
+  </div>
+  <span class="mob-nav-item" onclick="mobGo('landing')">Home</span>
+  <span class="mob-nav-item" onclick="mobGo('portfolio')">Portfolio</span>
+  <span class="mob-nav-item" onclick="mobGo('about')">About</span>
+  <span class="mob-nav-item" onclick="mobGo('blog')">Blog</span>
+  <!-- Dynamic sub-items populated by JS -->
+  <div id="mob-nav-projects-section" style="display:none">
+    <div class="mob-nav-section">Projects</div>
+    <div id="mob-proj-items"></div>
+    <div class="mob-nav-section">Mini Projects</div>
+    <div id="mob-mini-items"></div>
+  </div>
+  <div id="mob-nav-about-section" style="display:none">
+    <div class="mob-nav-section">About</div>
+    <span class="mob-nav-sub" onclick="mobScrollTo('about-header')">Profile</span>
+    <span class="mob-nav-sub" onclick="mobScrollTo('about-bio')">Bio & Hobbies</span>
+    <span class="mob-nav-sub" onclick="mobScrollTo('about-positions')">Positions</span>
+    <span class="mob-nav-sub" onclick="mobScrollTo('about-gallery')">Photo Gallery</span>
+  </div>
+  <div id="mob-nav-blog-section" style="display:none">
+    <div class="mob-nav-section">Timeline</div>
+    <div id="mob-blog-items"></div>
+  </div>
+</div>
+
+<div id="body-wrap">
+
+<!-- Left panel (desktop) -->
+<aside id="panel">
+  <div id="panel-landing" class="panel-page-content">
+    <div class="panel-section">
+      <div class="panel-section-header" onclick="toggleSection(this)"><span class="arrow">▾</span> Navigation</div>
+      <ul class="panel-items">
+        <li class="panel-item" onclick="showPage('portfolio')">Portfolio</li>
+        <li class="panel-item" onclick="showPage('about')">About</li>
+        <li class="panel-item" onclick="showPage('blog')">Blog</li>
+      </ul>
+    </div>
+  </div>
+  <div id="panel-portfolio" class="panel-page-content">
+    <div class="panel-section">
+      <div class="panel-section-header" onclick="toggleSection(this)"><span class="arrow">▾</span> Projects</div>
+      <ul class="panel-items" id="panel-proj-list"></ul>
+    </div>
+    <div class="panel-section">
+      <div class="panel-section-header" onclick="toggleSection(this)"><span class="arrow">▾</span> Mini Projects</div>
+      <ul class="panel-items" id="panel-mini-list"></ul>
+    </div>
+  </div>
+  <div id="panel-project" class="panel-page-content">
+    <div class="panel-back-btn" onclick="backToPortfolio()">← Back</div>
+    <div class="panel-section">
+      <div class="panel-section-header" onclick="toggleSection(this)"><span class="arrow">▾</span> Projects</div>
+      <ul class="panel-items" id="panel-proj-list-2"></ul>
+    </div>
+    <div class="panel-section">
+      <div class="panel-section-header" onclick="toggleSection(this)"><span class="arrow">▾</span> Mini Projects</div>
+      <ul class="panel-items" id="panel-mini-list-2"></ul>
+    </div>
+  </div>
+  <div id="panel-about" class="panel-page-content">
+    <div class="panel-section">
+      <div class="panel-section-header" onclick="toggleSection(this)"><span class="arrow">▾</span> About</div>
+      <ul class="panel-items">
+        <li class="panel-item" data-target="about-header"    onclick="scrollToId('about-header')">Profile</li>
+        <li class="panel-item" data-target="about-bio"       onclick="scrollToId('about-bio')">Bio &amp; Hobbies</li>
+        <li class="panel-item" data-target="about-positions" onclick="scrollToId('about-positions')">Positions</li>
+        <li class="panel-item" data-target="about-gallery"   onclick="scrollToId('about-gallery')">Photo Gallery</li>
+      </ul>
+    </div>
+  </div>
+  <div id="panel-blog" class="panel-page-content">
+    <div class="panel-section">
+      <div class="panel-section-header" onclick="toggleSection(this)"><span class="arrow">▾</span> Timeline</div>
+      <ul class="panel-items" id="panel-blog-timeline"></ul>
+    </div>
+  </div>
+</aside>
+
+<!-- Project sub-panel (desktop) -->
+<aside id="proj-panel">
+  <div class="panel-section">
+    <div class="panel-section-header" onclick="toggleSection(this)"><span class="arrow">▾</span> Sections</div>
+    <ul class="panel-items" id="proj-panel-sections"></ul>
+  </div>
+</aside>
+
+<!-- Project two-column view -->
+<div id="proj-view">
+  <div id="proj-content-col"></div>
+  <div id="proj-carousel-col">
+    <div class="proj-carousel-wrap" id="proj-car-wrap">
+      <div class="proj-carousel-placeholder" id="proj-car-placeholder">No images yet</div>
+      <img id="proj-car-img" class="proj-carousel-img" src="" alt="" style="display:none">
+    </div>
+    <div class="proj-carousel-nav">
+      <button class="proj-car-btn" id="proj-car-prev" onclick="projCarStep(-1)">&#8592;</button>
+      <span id="proj-car-counter"></span>
+      <button class="proj-car-btn" id="proj-car-next" onclick="projCarStep(1)">&#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- Main content -->
+<main id="main">
+
+  <!-- Landing -->
+  <div class="page active" id="page-landing">
+    <div class="landing-a">
+      <div>
+        <h1>Alex Sung</h1>
+        <p style="color:var(--muted);font-size:13px;margin-top:.3rem;">Electrical Engineering Student · University of British Columbia</p>
+      </div>
+      <div class="meta">
+        <span>📍 Richmond, BC</span>
+        <span>✉ <a class="ul" href="mailto:alexsung8888@gmail.com">alexsung8888@gmail.com</a></span>
+      </div>
+      <div class="social-row" id="landing-socials"></div>
+      <div class="nav-cards">
+        <div class="nav-card" onclick="showPage('portfolio')"><h2>Portfolio</h2><p>Projects, mini builds, and engineering work.</p></div>
+        <div class="nav-card" onclick="showPage('about')"><h2>About</h2><p>Background, positions, and photos.</p></div>
+        <div class="nav-card" onclick="showPage('blog')"><h2>Blog</h2><p>Updates, experiences, and life posts.</p></div>
+      </div>
+      <hr class="section-div">
+      <div>
+        <p style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem;">Latest</p>
+        <div class="land-latest" id="land-latest-cards"></div>
+      </div>
+    </div>
+    <footer class="site-footer">Alex Sung · Richmond, BC · alexsung8888@gmail.com</footer>
+  </div>
+
+  <!-- Portfolio -->
+  <div class="page" id="page-portfolio">
+    <h1 class="section-title-h1">Portfolio</h1>
+    <p class="section-sub">Latest projects. Click tags to filter.</p>
+    <div class="filter-bar" id="filter-bar">
+      <button class="tag-btn on" data-filter="all" onclick="filterTag(this)">All</button>
+      <button class="tag-btn" data-filter="Project" onclick="filterTag(this)">Project</button>
+      <button class="tag-btn" data-filter="Mini Project" onclick="filterTag(this)">Mini Project</button>
+      <button class="tag-btn" data-filter="3D Printing" onclick="filterTag(this)">3D Printing</button>
+      <button class="tag-btn" data-filter="Hardware" onclick="filterTag(this)">Hardware</button>
+      <button class="tag-btn" data-filter="Software" onclick="filterTag(this)">Software</button>
+      <button class="tag-btn" data-filter="Mechanical Design" onclick="filterTag(this)">Mechanical Design</button>
+      <button class="tag-btn" data-filter="Electrical Design" onclick="filterTag(this)">Electrical Design</button>
+      <button class="tag-btn" data-filter="Downloadable Model" onclick="filterTag(this)">Downloadable Model</button>
+      <button class="tag-btn" data-filter="Miscellaneous" onclick="filterTag(this)">Miscellaneous</button>
+    </div>
+    <div class="portfolio-section">
+      <div class="portfolio-section-title section-anchor" id="section-projects">Projects</div>
+      <div id="proj-cards-container"></div>
+    </div>
+    <div class="portfolio-section">
+      <div class="portfolio-section-title section-anchor" id="section-mini">Mini Projects</div>
+      <div id="mini-cards-container"></div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <div class="page" id="page-about">
+    <div class="about-header section-anchor" id="about-header">
+      <div class="about-photo-wrap">
+        <!-- <img src="media/about/your-photo.jpg" alt="Alex Sung"> -->
+        <span style="text-align:center">[profile photo]<br><small>media/about/<br>your-photo.jpg</small></span>
+      </div>
+      <div class="about-info">
+        <div class="about-name">Alex Sung</div>
+        <div class="about-title-line">Electrical Engineering Student · University of British Columbia</div>
+        <div style="color:var(--muted);font-size:12.5px;">Richmond, BC · alexsung8888@gmail.com</div>
+        <div class="social-row" id="about-socials" style="margin-top:.5rem;"></div>
+      </div>
+    </div>
+    <div class="about-section-title section-anchor" id="about-bio">Bio &amp; Hobbies</div>
+    <p class="about-bio placeholder">[Add a short bio here.]</p>
+    <ul class="hobbies-grid" style="margin-top:1rem;">
+      <li>3D printing &amp; modeling</li><li>Electronics &amp; Arduino</li>
+      <li>Robotics</li><li>Fishing</li>
+      <li>Photography</li><li>Anime</li>
+      <li>[add hobby]</li><li>[add hobby]</li>
+    </ul>
+    <div class="about-section-title section-anchor" id="about-positions">Position History</div>
+    <ul class="position-list">
+      <li class="position-item">
+        <span class="position-role">Co-Lead, Mechanical Team</span>
+        <span class="position-org">AKCSE Robot Arm Project</span>
+        <span class="position-date">2026 – Present</span>
+      </li>
+      <li class="position-item">
+        <span class="position-role">[Role]</span>
+        <span class="position-org">[Organization]</span>
+        <span class="position-date">[Date range]</span>
+      </li>
+    </ul>
+    <div class="about-section-title section-anchor" id="about-gallery">Photo Gallery</div>
+    <div class="gallery-controls">
+      <button class="tag-btn on" id="btn-albums" onclick="setGalleryMode('albums')">Albums</button>
+      <button class="tag-btn" id="btn-chrono" onclick="setGalleryMode('chrono')">Latest</button>
+    </div>
+    <div id="gallery-albums">
+      <div id="album-list-view"><div class="album-grid" id="album-grid"></div></div>
+      <div class="album-view" id="album-detail-view">
+        <span class="album-back" onclick="closeAlbum()">← Back to albums</span>
+        <div class="album-detail-title" id="album-detail-title"></div>
+        <div class="photo-grid" id="album-detail-photos"></div>
+      </div>
+    </div>
+    <div id="gallery-chrono" style="display:none"><div class="chrono-grid" id="chrono-grid"></div></div>
+    <footer class="site-footer">Alex Sung · Richmond, BC · alexsung8888@gmail.com</footer>
+  </div>
+
+  <!-- Blog -->
+  <div class="page" id="page-blog">
+    <h1 class="section-title-h1">Blog</h1>
+    <p class="section-sub">Updates, experiences, and life posts.</p>
+    <div class="blog-feed" id="blog-feed"></div>
+    <footer class="site-footer">Alex Sung · Richmond, BC · alexsung8888@gmail.com</footer>
+  </div>
+
+</main>
+</div>
+</div>
+
+<!-- Mini drawer -->
+<div id="mini-drawer">
+  <div id="mini-drawer-header">
+    <span id="mini-drawer-title"></span>
+    <button id="mini-drawer-close" onclick="closeMiniDrawer()">✕</button>
+  </div>
+  <div id="mini-drawer-carousel">
+    <img id="mini-car-img" src="" alt="" style="display:none">
+    <div id="mini-car-placeholder" class="proj-carousel-placeholder"></div>
+  </div>
+  <div class="mini-car-nav">
+    <button class="proj-car-btn" id="mini-car-prev" onclick="miniCarStep(-1)">&#8592;</button>
+    <span id="mini-car-counter"></span>
+    <button class="proj-car-btn" id="mini-car-next" onclick="miniCarStep(1)">&#8594;</button>
+  </div>
+  <div id="mini-drawer-body">
+    <div id="mini-drawer-date"></div>
+    <div id="mini-drawer-desc"></div>
+    <div id="mini-drawer-tags"></div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lb-arrow" id="lb-prev" onclick="lbStep(-1)">&#8592;</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lb-arrow" id="lb-next" onclick="lbStep(1)">&#8594;</button>
+  <div id="lb-counter"></div>
+</div>
+
+<script>
+/* ============================================================
+   [D-SOC] Social links
+   icon: PNG path inside media/icons/
+   ============================================================ */
+const SOCIAL_LINKS=[
+  {label:"LinkedIn",href:"https://linkedin.com",icon:"media/icons/linkedin.png"},
+  {label:"GitHub",href:"https://github.com",icon:"media/icons/github.png"},
+];
+const RESUME_LINK="media/your-resume.pdf";
+
+/* ============================================================
+   [D-PRJ] Projects
+   To add: copy any {} block, fill fields, prepend for newest-first.
+   id      — unique, no spaces (also used as folder name)
+   img     — thumbnail in media/projects/  ("" = placeholder)
+   images  — filenames in media/projects/<id>/
+   sections— null = DEFAULT_SECTIONS; or [{title,desc,imgIndex}]
+   ============================================================ */
+const DEFAULT_SECTIONS=[
+  {title:"Overview",  desc:"[Describe the project overview here.]",    imgIndex:0},
+  {title:"Process",   desc:"[Describe the build/design process here.]",imgIndex:1},
+  {title:"Results",   desc:"[Describe the outcome and results here.]", imgIndex:2},
+  {title:"Reflection",desc:"[What did you learn from this project?]",  imgIndex:null},
+];
+const PROJECTS=[
+  {id:"proj-arduino",title:"Arduino Metal Claw",date:"Jan 2026 – Feb 2026",desc:"[Add project description here.]",tags:["Project","Hardware","Electrical Design","Mechanical Design"],img:"",images:[],sections:null},
+  {id:"proj-toothpaste",title:"Toothpaste Dispenser Technical Memorandum",date:"Oct 2025 – Dec 2025",desc:"APSC 100 module 3 — adaptive device for client Ken Fraser.",tags:["Project","Mechanical Design"],img:"",images:[],sections:null},
+  {id:"proj-chair",title:"Disaster-Relief Cardboard Chair",date:"Sep 2025 – Oct 2025",desc:"APSC 100 module 1 — ranked 1st overall.",tags:["Project","Mechanical Design"],img:"",images:[],sections:null},
+  {id:"proj-speaker",title:"Bluetooth Speaker",date:"Dec 2024 – Mar 2025",desc:'Highschool capstone. Self-taught 3D modeling, printing, soldering, and circuit design. <a class="ul" href="https://www.youtube.com/watch?v=JUrEkrl5aF4" target="_blank">Video →</a>',tags:["Project","Hardware","Electrical Design","Mechanical Design","3D Printing"],img:"",images:[],sections:null},
+  {id:"proj-cookie",title:"Cookie Cart Launcher",date:"Apr 2024 – Jun 2024",desc:"Physics 11 final — elastic-powered cookie delivery cart.",tags:["Project","Mechanical Design","Hardware"],img:"",images:[],sections:null},
+];
+
+/* ============================================================
+   [D-MIN] Mini projects
+   To add: copy any {} block, fill fields, prepend for newest-first.
+   images: filenames in media/mini-projects/<id>/
+   ============================================================ */
+const MINI_PROJECTS=[
+  {id:"mini-cardholder",title:"Card Holder",date:"May 31, 2026",desc:'Plastic card holder. <a class="ul" href="https://www.printables.com/model/1742576" target="_blank">Printables →</a>',tags:["Mini Project","3D Printing","Mechanical Design","Downloadable Model"],img:"",images:[]},
+  {id:"mini-marker",title:"Marker Holder",date:"Feb 21, 2026",desc:'Multi-size marker holder. <a class="ul" href="https://www.printables.com/model/1742582" target="_blank">Printables →</a>',tags:["Mini Project","3D Printing","Mechanical Design","Downloadable Model"],img:"",images:[]},
+  {id:"mini-catkeys",title:"Cat Keychains",date:"Feb 27, 2024",desc:'Two cat keychains. <a class="ul" href="https://www.printables.com/model/837580-cat-bookmark" target="_blank">Reference →</a>',tags:["Mini Project","3D Printing","Miscellaneous"],img:"",images:[]},
+  {id:"mini-pencilcase",title:"Magnetic Pencil Case",date:"Feb 28–29, 2024",desc:"Lightweight magnetic pencil case. v1 and v2.",tags:["Mini Project","3D Printing","Mechanical Design"],img:"",images:[]},
+  {id:"mini-fidget",title:"Fidget Spinner",date:"Feb 27, 2024",desc:"3D printed fidget spinner with press-fit ball bearing.",tags:["Mini Project","3D Printing","Mechanical Design"],img:"",images:[]},
+  {id:"mini-initiald",title:"Initial D Keychain",date:"Feb 24, 2024",desc:'Initial D keychain. <a class="ul" href="https://www.printables.com/model/549920-initial-d-fujiwara-tofu-store-plaque" target="_blank">Tag →</a> · <a class="ul" href="https://www.printables.com/model/405420-toyota-ae86-trueno-keychain" target="_blank">Car →</a>',tags:["Mini Project","3D Printing","Miscellaneous","Downloadable Model"],img:"",images:[]},
+];
+
+/* ============================================================
+   [D-ALB] Albums
+   To add: copy any {} block, fill fields.
+   folder: subfolder inside media/photos/
+   photos: [{src:"filename.jpg",caption:"..."}]  First = cover. src""=placeholder.
+   ============================================================ */
+const ALBUMS=[
+  {id:"album-fishing",title:"Fishing Trip",folder:"fishing",photos:[{src:"",caption:"Cover"},{src:"",caption:"Photo 2"},{src:"",caption:"Photo 3"}]},
+  {id:"album-builds",title:"Builds",folder:"builds",photos:[{src:"",caption:"Cover"},{src:"",caption:"Photo 2"}]},
+  {id:"album-misc",title:"Miscellaneous",folder:"misc",photos:[{src:"",caption:"Cover"},{src:"",caption:"Photo 2"}]},
+];
+
+/* ============================================================
+   [D-BLG] Blog posts
+   To add: copy any {} block, PREPEND it (newest first).
+   type: "small"|"large"|"text"
+   images: filenames in media/blog/<folder>/
+   bgColor/textColor: per-post theme overrides
+   ============================================================ */
+const BLOG_POSTS=[
+  {id:"blog-fishing-2026",type:"large",title:"3-Day Fishing Trip",caption:"Just got back from a 3-day fishing trip with my family. Got some nice shots with the RX10 II.",date:"June 6, 2026",images:[],folder:"fishing-2026",bgColor:"#ffffff",textColor:"#1d1915"},
+  {id:"blog-site-update",type:"text",title:"Portfolio Site Rebuild",caption:"Rebuilt my portfolio from the ground up with a new multi-page SPA structure and blog page.",date:"June 1, 2026",images:[],folder:"site-update",bgColor:"#ffffff",textColor:"#1d1915"},
+  {id:"blog-robot-arm",type:"small",title:"Robot Arm Update",caption:"Promoted to Co-Lead of the Mechanical Team on the AKCSE Robot Arm Project!",date:"May 26, 2026",images:[],folder:"robot-arm",bgColor:"#ffffff",textColor:"#1d1915"},
+];
+
+/* ── End of data ── */
+
+/* [F-SOC] */
+function renderSocials(){
+  const nodes=[];
+  SOCIAL_LINKS.forEach(s=>{
+    const a=document.createElement('a');a.className='soft-btn';a.href=s.href;a.target='_blank';a.rel='noopener';
+    a.innerHTML=`<img class="social-icon" src="${s.icon}" alt="" onerror="this.style.display='none'">${s.label} ↗`;
+    nodes.push(a);
+  });
+  const res=document.createElement('a');res.className='soft-btn';res.href=RESUME_LINK;res.target='_blank';res.rel='noopener';
+  res.innerHTML=`<img class="social-icon" src="media/icons/resume.png" alt="" onerror="this.style.display='none'">Resume ↓`;
+  nodes.push(res);
+  ['landing-socials','about-socials'].forEach(id=>{
+    const el=document.getElementById(id);el.innerHTML='';
+    nodes.forEach(n=>el.appendChild(n.cloneNode(true)));
+  });
+}
+
+/* [F-PORT] */
+function makeCard(item,folder,isMini){
+  const imgSrc=item.img?`media/${folder}/${item.img}`:"";
+  const thumb=imgSrc?`<div class="proj-thumb"><img src="${imgSrc}" alt="${item.title}"></div>`:`<div class="proj-thumb">[photo]</div>`;
+  const tags=item.tags.map(t=>`<span class="proj-tag">${t}</span>`).join('');
+  const card=document.createElement('div');
+  card.className='proj-card section-anchor';card.id=item.id;
+  card.dataset.tags=item.tags.join(',');card.dataset.mini=isMini?'1':'0';
+  card.innerHTML=`${thumb}<div class="proj-body"><div class="proj-title">${item.title}</div><div class="proj-date">${item.date}</div><div class="proj-desc">${item.desc}</div><div class="proj-tags">${tags}</div></div>`;
+  card.addEventListener('click',()=>isMini?openMiniDrawer(item.id):openProject(item.id));
+  return card;
+}
+
+function makePanelItem(title,targetId,onClick){
+  const li=document.createElement('li');li.className='panel-item';
+  li.dataset.target=targetId;li.textContent=title;li.addEventListener('click',onClick);return li;
+}
+
+function buildPortfolio(){
+  PROJECTS.forEach(p=>{
+    document.getElementById('proj-cards-container').appendChild(makeCard(p,'projects',false));
+    document.getElementById('panel-proj-list').appendChild(makePanelItem(p.title,p.id,()=>{resetFilters();showPage('portfolio');setTimeout(()=>scrollToId(p.id),80);}));
+    document.getElementById('panel-proj-list-2').appendChild(makePanelItem(p.title,p.id,()=>openProject(p.id)));
+    // Mobile nav
+    const mi=document.createElement('span');mi.className='mob-nav-sub';mi.textContent=p.title;
+    mi.onclick=()=>{closeMobNav();resetFilters();showPage('portfolio');setTimeout(()=>scrollToId(p.id),80);};
+    document.getElementById('mob-proj-items').appendChild(mi);
+  });
+  MINI_PROJECTS.forEach(p=>{
+    document.getElementById('mini-cards-container').appendChild(makeCard(p,'mini-projects',true));
+    document.getElementById('panel-mini-list').appendChild(makePanelItem(p.title,p.id,()=>{resetFilters();showPage('portfolio');setTimeout(()=>{scrollToId(p.id);openMiniDrawer(p.id);},80);}));
+    document.getElementById('panel-mini-list-2').appendChild(makePanelItem(p.title,p.id,()=>{backToPortfolio();setTimeout(()=>{scrollToId(p.id);openMiniDrawer(p.id);},120);}));
+    // Mobile nav
+    const mi=document.createElement('span');mi.className='mob-nav-sub';mi.textContent=p.title;
+    mi.onclick=()=>{closeMobNav();resetFilters();showPage('portfolio');setTimeout(()=>{scrollToId(p.id);openMiniDrawer(p.id);},80);};
+    document.getElementById('mob-mini-items').appendChild(mi);
+  });
+}
+
+/* [F-TAG] */
+const activeFilters=new Set();
+function resetFilters(){
+  activeFilters.clear();
+  document.querySelectorAll('#filter-bar .tag-btn').forEach(b=>b.classList.toggle('on',b.dataset.filter==='all'));
+  document.querySelectorAll('.proj-card').forEach(c=>c.classList.remove('hidden'));
+  ['proj-cards-container','mini-cards-container'].forEach(cid=>document.getElementById(cid).closest('.portfolio-section').style.display='');
+}
+function filterTag(btn){
+  const f=btn.dataset.filter;
+  const specific=[...document.querySelectorAll('#filter-bar .tag-btn:not([data-filter="all"])')];
+  if(f==='all'){activeFilters.clear();}
+  else{activeFilters.has(f)?activeFilters.delete(f):activeFilters.add(f);if(activeFilters.size===specific.length)activeFilters.clear();}
+  document.querySelectorAll('#filter-bar .tag-btn').forEach(b=>b.classList.toggle('on',b.dataset.filter==='all'?activeFilters.size===0:activeFilters.has(b.dataset.filter)));
+  document.querySelectorAll('.proj-card').forEach(card=>{const tags=card.dataset.tags.split(',');card.classList.toggle('hidden',activeFilters.size>0&&![...activeFilters].some(f=>tags.includes(f)));});
+  ['proj-cards-container','mini-cards-container'].forEach(cid=>{const cont=document.getElementById(cid);const any=[...cont.querySelectorAll('.proj-card')].some(c=>!c.classList.contains('hidden'));cont.closest('.portfolio-section').style.display=any?'':'none';});
+}
+
+/* [F-PAG] */
+function showPage(page){
+  document.getElementById('proj-view').classList.remove('active');
+  document.getElementById('proj-panel').style.display='none';
+  document.getElementById('main').style.display='';
+  document.getElementById('panel').classList.remove('dark');
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const pg=document.getElementById('page-'+page);if(pg)pg.classList.add('active');
+  document.querySelectorAll('.nav-center .nav-btn[data-page]').forEach(b=>b.classList.remove('active'));
+  const nb=document.querySelector('.nav-center .nav-btn[data-page="'+page+'"]');if(nb)nb.classList.add('active');
+  document.querySelectorAll('.panel-page-content').forEach(p=>p.style.display='none');
+  const pp=document.getElementById('panel-'+page);if(pp)pp.style.display='block';
+  // Mobile nav sub-sections
+  document.getElementById('mob-nav-projects-section').style.display=page==='portfolio'?'block':'none';
+  document.getElementById('mob-nav-about-section').style.display=page==='about'?'block':'none';
+  document.getElementById('mob-nav-blog-section').style.display=page==='blog'?'block':'none';
+  window.scrollTo({top:0,behavior:'smooth'});
+  setTimeout(updateActivePanel,60);
+}
+
+/* [F-PAN] */
+function toggleSection(header){header.classList.toggle('collapsed');header.nextElementSibling.classList.toggle('hidden');}
+function updateActivePanel(){
+  const inProjView=document.getElementById('proj-view').classList.contains('active');
+  const anchors=inProjView?document.querySelectorAll('#proj-content-col .section-anchor'):document.querySelectorAll('.page.active .section-anchor');
+  let current=null;const threshold=window.innerHeight*.28;
+  anchors.forEach(el=>{const rect=el.getBoundingClientRect();if(rect.top<=threshold)current=el.id;});
+  document.querySelectorAll('.panel-item,.timeline-item').forEach(item=>{const t=item.dataset.target;item.classList.toggle('active',t===current||(item.getAttribute('onclick')||'').includes(`'${current}'`));});
+}
+window.addEventListener('scroll',updateActivePanel,{passive:true});
+
+/* [F-SCR] */
+function scrollToId(id){
+  const el=document.getElementById(id);if(!el)return;
+  const rect=el.getBoundingClientRect();const scrollTop=window.pageYOffset||document.documentElement.scrollTop;
+  window.scrollTo({top:Math.max(0,scrollTop+rect.top-(window.innerHeight*.25)),behavior:'smooth'});
+  flashEl(el);
+}
+function flashEl(el){el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');setTimeout(()=>el.classList.remove('flash'),1300);}
+
+/* [F-PRJ] */
+let projCarImages=[],projCarIndex=0,currentProjId=null;
+function openProject(id){
+  const proj=PROJECTS.find(p=>p.id===id);if(!proj)return;
+  currentProjId=id;
+  document.getElementById('main').style.display='none';
+  document.getElementById('proj-view').classList.add('active');
+  document.getElementById('proj-panel').style.display='block';
+  document.getElementById('panel').classList.add('dark');
+  document.querySelectorAll('.panel-page-content').forEach(p=>p.style.display='none');
+  document.getElementById('panel-project').style.display='block';
+  document.querySelectorAll('#panel-proj-list-2 .panel-item').forEach(li=>li.classList.toggle('active',li.dataset.target===id));
+  const col=document.getElementById('proj-content-col');col.innerHTML='';
+  const sections=(proj.sections||DEFAULT_SECTIONS).map((s,i)=>({title:s.title,desc:s.desc,imgIndex:s.imgIndex!==undefined?s.imgIndex:i}));
+  const hdr=document.createElement('div');
+  hdr.innerHTML=`<h2 class="proj-page-title section-anchor" id="proj-top">${proj.title}</h2><div class="proj-page-date">${proj.date}</div><div class="proj-tags" style="margin-bottom:1.2rem;">${proj.tags.map(t=>`<span class="proj-tag">${t}</span>`).join('')}</div><hr class="proj-div">`;
+  col.appendChild(hdr);
+  const secList=document.getElementById('proj-panel-sections');secList.innerHTML='';
+  sections.forEach((s,i)=>{
+    const block=document.createElement('div');block.className='proj-section-block section-anchor';block.id=`proj-sec-${i}`;
+    const hasImg=s.imgIndex!==null&&s.imgIndex!==undefined;
+    block.innerHTML=`<div class="proj-section-header"><span class="proj-section-title">${s.title}</span>${hasImg?`<button class="proj-section-img-btn" onclick="projCarGoTo(${s.imgIndex},this)">View image ↗</button>`:''}</div><p class="proj-section-desc">${s.desc}</p>`;
+    col.appendChild(block);
+    const li=document.createElement('li');li.className='panel-item';li.dataset.target=`proj-sec-${i}`;li.textContent=s.title;
+    li.onclick=()=>scrollToIdInCol(col,`proj-sec-${i}`);secList.appendChild(li);
+  });
+  projCarImages=(proj.images||[]).map(f=>`media/projects/${proj.id}/${f}`);projCarIndex=0;updateProjCarousel();
+  document.querySelectorAll('.nav-center .nav-btn[data-page]').forEach(b=>b.classList.remove('active'));
+  const nb=document.querySelector('.nav-center .nav-btn[data-page="portfolio"]');if(nb)nb.classList.add('active');
+  col.scrollTo({top:0});
+}
+function scrollToIdInCol(col,id){
+  const el=document.getElementById(id);if(!el)return;
+  const colTop=col.getBoundingClientRect().top,elTop=el.getBoundingClientRect().top;
+  col.scrollBy({top:elTop-colTop-col.clientHeight*.25,behavior:'smooth'});flashEl(el);
+}
+function backToPortfolio(){
+  document.getElementById('proj-view').classList.remove('active');
+  document.getElementById('proj-panel').style.display='none';
+  document.getElementById('main').style.display='';
+  document.getElementById('panel').classList.remove('dark');
+  showPage('portfolio');
+}
+function updateProjCarousel(){
+  const img=document.getElementById('proj-car-img'),ph=document.getElementById('proj-car-placeholder');
+  if(projCarImages.length&&projCarImages[projCarIndex]){img.src=projCarImages[projCarIndex];img.style.display='block';ph.style.display='none';}
+  else{img.style.display='none';ph.style.display='flex';ph.textContent=projCarImages.length?`[Image ${projCarIndex+1}]`:'[No images yet]';}
+  const total=projCarImages.length||1;
+  document.getElementById('proj-car-counter').textContent=`${projCarIndex+1} / ${total}`;
+  document.getElementById('proj-car-prev').disabled=projCarIndex===0;
+  document.getElementById('proj-car-next').disabled=projCarIndex>=(projCarImages.length||1)-1;
+  document.querySelectorAll('.proj-section-img-btn').forEach(b=>b.classList.remove('active-img-btn'));
+  const proj=PROJECTS.find(p=>p.id===currentProjId);
+  (proj?.sections||DEFAULT_SECTIONS).forEach((s,i)=>{if(s.imgIndex===projCarIndex){const btns=document.querySelectorAll('.proj-section-img-btn');if(btns[i])btns[i].classList.add('active-img-btn');}});
+}
+function projCarStep(dir){const max=Math.max(projCarImages.length-1,0);projCarIndex=Math.max(0,Math.min(projCarIndex+dir,max));updateProjCarousel();}
+function projCarGoTo(idx){projCarIndex=idx;updateProjCarousel();}
+
+/* [F-MIN] */
+let miniCarImages=[],miniCarIndex=0,openMiniId=null;
+function openMiniDrawer(id){
+  if(openMiniId===id&&document.getElementById('mini-drawer').classList.contains('open')){closeMiniDrawer();return;}
+  openMiniId=id;const mini=MINI_PROJECTS.find(p=>p.id===id);if(!mini)return;
+  document.getElementById('mini-drawer-title').textContent=mini.title;
+  document.getElementById('mini-drawer-date').textContent=mini.date;
+  document.getElementById('mini-drawer-desc').innerHTML=mini.desc;
+  document.getElementById('mini-drawer-tags').innerHTML=mini.tags.map(t=>`<span class="proj-tag">${t}</span>`).join('');
+  miniCarImages=(mini.images||[]).map(f=>`media/mini-projects/${mini.id}/${f}`);miniCarIndex=0;updateMiniCarousel();
+  document.getElementById('mini-drawer').classList.add('open');
+}
+function closeMiniDrawer(){document.getElementById('mini-drawer').classList.remove('open');openMiniId=null;}
+function updateMiniCarousel(){
+  const img=document.getElementById('mini-car-img'),ph=document.getElementById('mini-car-placeholder');
+  if(miniCarImages.length&&miniCarImages[miniCarIndex]){img.src=miniCarImages[miniCarIndex];img.style.display='block';ph.style.display='none';}
+  else{img.style.display='none';ph.style.display='flex';ph.textContent='[No images yet]';}
+  const total=miniCarImages.length||1;
+  document.getElementById('mini-car-counter').textContent=`${miniCarIndex+1} / ${total}`;
+  document.getElementById('mini-car-prev').disabled=miniCarIndex===0;
+  document.getElementById('mini-car-next').disabled=miniCarIndex>=(miniCarImages.length||1)-1;
+}
+function miniCarStep(dir){const max=Math.max(miniCarImages.length-1,0);miniCarIndex=Math.max(0,Math.min(miniCarIndex+dir,max));updateMiniCarousel();}
+document.addEventListener('click',e=>{
+  const drawer=document.getElementById('mini-drawer');
+  if(!drawer.classList.contains('open'))return;
+  if(drawer.contains(e.target))return;
+  if(e.target.closest('.proj-card[data-mini="1"]'))return;
+  closeMiniDrawer();
+},true);
+
+/* [F-BLG] */
+function buildBlogCarousel(post){
+  const imgs=(post.images||[]).map(f=>`media/blog/${post.folder}/${f}`);
+  if(!imgs.length)return`<div class="bp-carousel"><div class="bp-carousel-placeholder">[${post.folder}/photo.jpg]</div></div>`;
+  const slides=imgs.map((src,i)=>`<img src="${src}" alt="" style="display:${i===0?'block':'none'}">`).join('');
+  const dots=imgs.map((_,i)=>`<div class="bp-car-dot${i===0?' on':''}" onclick="bpCarGoTo(this,${i})"></div>`).join('');
+  const arrows=imgs.length>1?`<div class="bp-car-arrows"><button class="bp-car-arrow" onclick="bpCarStep(this,-1)">&#8592;</button><button class="bp-car-arrow" onclick="bpCarStep(this,1)">&#8594;</button></div>`:'';
+  return`<div class="bp-carousel">${slides}${arrows}${imgs.length>1?`<div class="bp-car-dots">${dots}</div>`:''}</div>`;
+}
+function bpCarGoTo(dot,idx){const c=dot.closest('.bp-carousel');c.querySelectorAll('img').forEach((img,i)=>img.style.display=i===idx?'block':'none');c.querySelectorAll('.bp-car-dot').forEach((d,i)=>d.classList.toggle('on',i===idx));}
+function bpCarStep(btn,dir){const c=btn.closest('.bp-carousel');const imgs=[...c.querySelectorAll('img')];const cur=imgs.findIndex(img=>img.style.display==='block');const next=(cur+dir+imgs.length)%imgs.length;imgs.forEach((img,i)=>img.style.display=i===next?'block':'none');c.querySelectorAll('.bp-car-dot').forEach((d,i)=>d.classList.toggle('on',i===next));}
+function buildBlogFeed(){
+  const feed=document.getElementById('blog-feed');feed.innerHTML='';
+  BLOG_POSTS.forEach(post=>{
+    const el=document.createElement('div');el.id=post.id;el.classList.add('section-anchor');
+    const carousel=buildBlogCarousel(post);const bg=post.bgColor||'#ffffff',tc=post.textColor||'#1d1915';
+    if(post.type==='small'){el.className+=' blog-post-small';el.style.cssText=`background:${bg};color:${tc}`;el.innerHTML=`<div class="bp-inner"><div class="bp-title">${post.title}</div></div>${carousel}<div class="bp-inner"><div class="bp-caption">${post.caption}</div><div class="bp-date">${post.date}</div></div>`;}
+    else if(post.type==='large'){el.className+=' blog-post-large';el.style.cssText=`background:${bg};color:${tc}`;el.innerHTML=`<div class="bp-carousel-side">${carousel}</div><div class="bp-text-side"><div class="bp-title">${post.title}</div><div class="bp-caption">${post.caption}</div><div class="bp-date">${post.date}</div></div>`;}
+    else{el.className+=' blog-post-text';el.style.cssText=`background:${bg};color:${tc}`;el.innerHTML=`<div class="bp-title">${post.title}</div><div class="bp-caption">${post.caption}</div><div class="bp-date">${post.date}</div>`;}
+    feed.appendChild(el);
+  });
+}
+function buildBlogPanel(){
+  const container=document.getElementById('panel-blog-timeline');container.innerHTML='';
+  const mobContainer=document.getElementById('mob-blog-items');mobContainer.innerHTML='';
+  const byYear={};
+  BLOG_POSTS.forEach(p=>{const year=p.date.split(', ')[1]||'2026';if(!byYear[year])byYear[year]=[];byYear[year].push(p);});
+  Object.keys(byYear).sort((a,b)=>b-a).forEach(year=>{
+    const yr=document.createElement('li');yr.className='timeline-year';yr.textContent=year;container.appendChild(yr);
+    const mobYr=document.createElement('div');mobYr.className='mob-nav-section';mobYr.textContent=year;mobContainer.appendChild(mobYr);
+    byYear[year].forEach(p=>{
+      const li=document.createElement('li');li.className='timeline-item';li.dataset.target=p.id;li.textContent=p.title;li.onclick=()=>scrollToId(p.id);container.appendChild(li);
+      const mi=document.createElement('span');mi.className='mob-nav-sub';mi.textContent=p.title;mi.onclick=()=>{closeMobNav();scrollToId(p.id);};mobContainer.appendChild(mi);
+    });
+  });
+}
+
+/* [F-GAL] */
+let lbImages=[],lbIndex=0;
+function renderAlbums(){
+  const grid=document.getElementById('album-grid');
+  ALBUMS.forEach(album=>{
+    const cover=album.photos[0];const coverSrc=cover.src?`media/photos/${album.folder}/${cover.src}`:"";
+    const card=document.createElement('div');card.className='album-card';card.onclick=()=>openAlbum(album.id);
+    card.innerHTML=`<div class="album-cover-wrap">${coverSrc?`<img src="${coverSrc}" alt="${album.title}">`:`<div class="album-placeholder">[cover]<br><small>${album.folder}/</small></div>`}<div class="album-overlay"><span>${album.title}</span></div></div><div class="album-count">${album.photos.length} photo${album.photos.length!==1?'s':''}</div>`;
+    grid.appendChild(card);
+  });
+}
+function openAlbum(id){
+  const album=ALBUMS.find(a=>a.id===id);if(!album)return;
+  document.getElementById('album-list-view').style.display='none';
+  document.getElementById('album-detail-view').classList.add('active');
+  document.getElementById('album-detail-title').textContent=album.title;
+  lbImages=album.photos.map(p=>({src:p.src?`media/photos/${album.folder}/${p.src}`:"",caption:p.caption}));
+  const grid=document.getElementById('album-detail-photos');grid.innerHTML='';
+  album.photos.forEach((p,i)=>{const src=p.src?`media/photos/${album.folder}/${p.src}`:"";const thumb=document.createElement('div');thumb.className='photo-thumb';thumb.onclick=()=>openLightbox(lbImages,i);thumb.innerHTML=src?`<img src="${src}" alt="${p.caption}">`:`<div class="photo-placeholder-thumb">[${p.caption}]</div>`;grid.appendChild(thumb);});
+}
+function closeAlbum(){document.getElementById('album-list-view').style.display='';document.getElementById('album-detail-view').classList.remove('active');}
+function renderChrono(){
+  const grid=document.getElementById('chrono-grid');const chronoLb=[];
+  ALBUMS.forEach(a=>a.photos.forEach(p=>chronoLb.push({src:p.src?`media/photos/${a.folder}/${p.src}`:"",caption:p.caption})));
+  chronoLb.forEach((p,i)=>{const item=document.createElement('div');item.className='chrono-item';item.onclick=()=>openLightbox(chronoLb,i);item.innerHTML=p.src?`<img src="${p.src}" alt="${p.caption}">`:`<div class="photo-placeholder-thumb" style="height:100%;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:10px;color:var(--muted);text-align:center;padding:.25rem;">[${p.caption}]</div>`;grid.appendChild(item);});
+}
+function setGalleryMode(mode){document.getElementById('gallery-albums').style.display=mode==='albums'?'':'none';document.getElementById('gallery-chrono').style.display=mode==='chrono'?'':'none';document.getElementById('btn-albums').classList.toggle('on',mode==='albums');document.getElementById('btn-chrono').classList.toggle('on',mode==='chrono');}
+
+/* [F-LBX] */
+function openLightbox(images,index){lbImages=images;lbIndex=index;showLbImage();document.getElementById('lightbox').classList.add('open');}
+function showLbImage(){const img=document.getElementById('lightbox-img');img.style.opacity=0;setTimeout(()=>{img.src=lbImages[lbIndex]?.src||'';img.style.opacity=1;},80);document.getElementById('lb-counter').textContent=`${lbIndex+1} / ${lbImages.length}`;document.getElementById('lb-prev').classList.toggle('hidden',lbImages.length<=1);document.getElementById('lb-next').classList.toggle('hidden',lbImages.length<=1);}
+function lbStep(dir){lbIndex=(lbIndex+dir+lbImages.length)%lbImages.length;showLbImage();}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.getElementById('lightbox-img').src='';}
+document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===document.getElementById('lightbox')||e.target===document.getElementById('lightbox-img'))closeLightbox();});
+document.addEventListener('keydown',e=>{if(!document.getElementById('lightbox').classList.contains('open'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')lbStep(-1);if(e.key==='ArrowRight')lbStep(1);});
+
+/* [F-LND] */
+function buildLandingLatest(){
+  const container=document.getElementById('land-latest-cards');container.innerHTML='';
+  function makeCoverDiv(src){const wrap=document.createElement('div');wrap.className='land-latest-cover';if(src){const img=document.createElement('img');img.src=src;wrap.appendChild(img);}else{wrap.textContent='[cover image]';}return wrap;}
+  const latestProj=PROJECTS[0]||MINI_PROJECTS[0];
+  if(latestProj){
+    const imgSrc=latestProj.images?.[0]?`media/projects/${latestProj.id}/${latestProj.images[0]}`:(latestProj.img?`media/projects/${latestProj.img}`:'');
+    const card=document.createElement('div');card.className='land-latest-card';card.appendChild(makeCoverDiv(imgSrc));
+    const body=document.createElement('div');body.className='land-latest-body';body.innerHTML=`<div class="land-latest-label">Latest Project</div><div class="land-latest-title">${latestProj.title}</div><div class="land-latest-sub">${latestProj.date}</div>`;
+    card.appendChild(body);const isMini=!!MINI_PROJECTS.find(p=>p.id===latestProj.id);
+    card.onclick=()=>isMini?openMiniDrawer(latestProj.id):openProject(latestProj.id);container.appendChild(card);
+  }
+  const latestBlog=BLOG_POSTS[0];
+  if(latestBlog){
+    const blogImg=latestBlog.images?.[0]?`media/blog/${latestBlog.folder}/${latestBlog.images[0]}`:'';
+    const card=document.createElement('div');card.className='land-latest-card';card.appendChild(makeCoverDiv(blogImg));
+    const body=document.createElement('div');body.className='land-latest-body';body.innerHTML=`<div class="land-latest-label">Latest Post</div><div class="land-latest-title">${latestBlog.title}</div><div class="land-latest-sub">${latestBlog.date}</div>`;
+    card.appendChild(body);card.onclick=()=>showPage('blog');container.appendChild(card);
+  }
+}
+
+/* [F-MOB] */
+function openMobNav(){document.getElementById('mob-nav').classList.add('open');document.getElementById('mob-nav-overlay').classList.add('open');}
+function closeMobNav(){document.getElementById('mob-nav').classList.remove('open');document.getElementById('mob-nav-overlay').classList.remove('open');}
+function mobGo(page){closeMobNav();showPage(page);}
+function mobScrollTo(id){closeMobNav();setTimeout(()=>scrollToId(id),80);}
+
+/* [F-INIT] */
+renderSocials();
+buildPortfolio();
+buildBlogFeed();
+buildBlogPanel();
+renderAlbums();
+renderChrono();
+buildLandingLatest();
+showPage('landing');
+</script>
+</body>
 </html>

@@ -21,15 +21,16 @@ iframe {
     width: 780px;
 }
 summary {
-    font-family: georgia, serif;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
     font-size: 17px;
     padding: 7px;
+    vertical-align: middle;
 }
 .details {
     font-family: monospace;
 }
 .project-date {
-    font-family: monospace;
+    font-family: arial;
     display: inline;
     font-size: 16px;
     padding-left: 7px;
